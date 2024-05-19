@@ -4,6 +4,7 @@ import {useSelector} from 'react-redux';
 import {AuthStack, DashboardStack} from './Stacks';
 import Routes from './Routes';
 import BottomTab from './BottomTabNavigation/index.js';
+import Splash from '../screens/SplashScreen/index.js';
 const Stack = createNativeStackNavigator();
 const RootStack = () => {
   let isLogin = useSelector(state => state.auth?.user);
@@ -13,13 +14,17 @@ const RootStack = () => {
         headerShown: false,
       }}>
       {!!isLogin ? (
-        // <Stack.Screen
-        //   name={Routes.DASHBOARD_STACK}
-        //   component={DashboardStack}
-        // />
-        <Stack.Screen name={Routes.BOTTOM_TAB} component={BottomTab} />
+        <Stack.Screen
+          name={Routes.DASHBOARD_STACK}
+          component={DashboardStack}
+        />
       ) : (
+        // <>
+        //   <Stack.Screen name={Routes.SPLASH_SCREEN} component={Splash} />
+        //   <Stack.Screen name={Routes.BOTTOM_TAB} component={BottomTab} />
+        // </>
         <Stack.Screen name={Routes.BOTTOM_TAB} component={BottomTab} />
+        // <Stack.Screen name={Routes.BOTTOM_TAB} component={BottomTab} />
         // <Stack.Screen name={Routes.AUTH_STACK} component={AuthStack} />
       )}
     </Stack.Navigator>
