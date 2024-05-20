@@ -1,20 +1,20 @@
 import React from 'react';
-import {Image, Platform, Text, View, StatusBar, StyleSheet} from 'react-native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { Image, Platform, Text, View, StatusBar, StyleSheet } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import SplashScreen from '../../screens/SplashScreen';
 import Routes from '../Routes';
-import {HomeScreen} from '../../screens';
-import {Colors, Images} from '../../assets';
+import { HomeScreen } from '../../screens';
+import { Colors, Images } from '../../assets';
 import Workout from '../../screens/Dashboard/WorkOutScreen';
 import MealScreen from '../../screens/Dashboard/Mealscreen';
 import Sound from '../../screens/Dashboard/Sound';
-import {home} from '../../assets/icons';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import { home } from '../../assets/icons';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Tab = createBottomTabNavigator();
 
-export default function BottomTabNavigator({navigation}) {
+export default function BottomTabNavigator({ navigation }) {
   const screenOptions = {
     tabBarShowLabel: true,
     tabBarHideOnKeyboard: true,
@@ -46,19 +46,20 @@ export default function BottomTabNavigator({navigation}) {
           name={Routes.HOME_SCREEN}
           component={HomeScreen}
           options={{
-            tabBarLabel: ({focused}) => {
+
+            tabBarLabel: ({ focused }) => {
               return (
                 <View
                   style={{
                     alignItems: 'center',
                     justifyContent: 'center',
-                    position: 'absolute',
+                    // position: 'absolute',
                   }}>
                   <Text
                     style={{
                       color: focused ? Colors.primary : Colors.white,
                       fontSize: 10,
-                      paddingBottom: 7,
+                      // paddingBottom: 7,
                     }}>
                     Home
                   </Text>
@@ -66,17 +67,17 @@ export default function BottomTabNavigator({navigation}) {
               );
             },
 
-            tabBarIcon: ({focused}) => {
+            tabBarIcon: ({ focused }) => {
               return (
                 <View
                   style={{
                     alignItems: 'center',
                     justifyContent: 'center',
-                    paddingBottom: 10,
+                    // paddingBottom: 10,
                   }}>
                   <Image
                     source={Images.HOME_ICON}
-                    style={{width: 20, height: 20}}
+                    style={{ width: 20, height: 20 }}
                     tintColor={focused ? Colors.primary : Colors.white}
                   />
                 </View>
@@ -88,18 +89,18 @@ export default function BottomTabNavigator({navigation}) {
           name={Routes.Work_Out}
           component={Workout}
           options={{
-            tabBarLabel: ({focused}) => {
+            tabBarLabel: ({ focused }) => {
               return (
                 <View
                   style={{
                     alignItems: 'center',
                     justifyContent: 'center',
-                    position: 'absolute',
+                    // position: 'absolute',
                   }}>
                   <Text
                     style={{
                       color: focused ? Colors.primary : Colors.white,
-                      paddingBottom: 7,
+                      // paddingBottom: 7,
                       fontSize: 10,
                     }}>
                     Work out
@@ -108,17 +109,17 @@ export default function BottomTabNavigator({navigation}) {
               );
             },
 
-            tabBarIcon: ({focused}) => {
+            tabBarIcon: ({ focused }) => {
               return (
                 <View
                   style={{
                     alignItems: 'center',
                     justifyContent: 'center',
-                    paddingBottom: 10,
+                    // paddingBottom: 10,
                   }}>
                   <Image
                     source={Images.WORK}
-                    style={{width: 30, height: 30}}
+                    style={{ width: 30, height: 30 }}
                     tintColor={focused ? Colors.primary : Colors.white}
                   />
                 </View>
@@ -130,18 +131,18 @@ export default function BottomTabNavigator({navigation}) {
           name={Routes.Meal_Plan}
           component={MealScreen}
           options={{
-            tabBarLabel: ({focused}) => {
+            tabBarLabel: ({ focused }) => {
               return (
                 <View
                   style={{
                     alignItems: 'center',
                     justifyContent: 'center',
-                    position: 'absolute',
+                    // position: 'absolute',
                   }}>
                   <Text
                     style={{
                       color: focused ? Colors.primary : Colors.white,
-                      paddingBottom: 7,
+                      // paddingBottom: 7,
 
                       fontSize: 10,
                     }}>
@@ -151,17 +152,17 @@ export default function BottomTabNavigator({navigation}) {
               );
             },
 
-            tabBarIcon: ({focused}) => {
+            tabBarIcon: ({ focused }) => {
               return (
                 <View
                   style={{
                     alignItems: 'center',
                     justifyContent: 'center',
-                    paddingBottom: 10,
+                    // paddingBottom: 10,
                   }}>
                   <Image
                     source={Images.DIET}
-                    style={{width: 20, height: 20}}
+                    style={{ width: 20, height: 20 }}
                     tintColor={focused ? Colors.primary : Colors.white}
                   />
                 </View>
@@ -173,18 +174,18 @@ export default function BottomTabNavigator({navigation}) {
           name={Routes.Sound}
           component={Sound}
           options={{
-            tabBarLabel: ({focused}) => {
+            tabBarLabel: ({ focused }) => {
               return (
                 <View
                   style={{
                     alignItems: 'center',
                     justifyContent: 'center',
-                    position: 'absolute',
+                    // position: 'absolute',
                   }}>
                   <Text
                     style={{
                       color: focused ? Colors.primary : Colors.white,
-                      paddingBottom: 7,
+                      // paddingBottom: 7,
                       fontSize: 10,
                     }}>
                     Sound
@@ -193,17 +194,17 @@ export default function BottomTabNavigator({navigation}) {
               );
             },
 
-            tabBarIcon: ({focused}) => {
+            tabBarIcon: ({ focused }) => {
               return (
                 <View
                   style={{
                     alignItems: 'center',
                     justifyContent: 'center',
-                    paddingBottom: 10,
+                    // paddingBottom: 10,
                   }}>
                   <Image
                     source={Images.VOLUME}
-                    style={{width: 20, height: 20}}
+                    style={{ width: 20, height: 20 }}
                     tintColor={focused ? Colors.primary : Colors.white}
                   />
                 </View>
@@ -212,7 +213,7 @@ export default function BottomTabNavigator({navigation}) {
           }}
         />
       </Tab.Navigator>
-    </SafeAreaView>
+    </SafeAreaView >
   );
 }
 const styles = StyleSheet.create({

@@ -1,7 +1,7 @@
-import {StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import LottieView from 'lottie-react-native';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import Routes from '../../navigation/Routes';
 import Animations from '../../assets/animations/Animations';
 useNavigation;
@@ -17,7 +17,7 @@ const Splash = () => {
         source={Animations.SPLASH_ANIMATION}
         autoPlay={false}
         resizeMode="cover"
-        onAnimationFinish={navigation.replce(Routes.BOTTOM_TAB)}
+        onAnimationFinish={navigation.navigate(Routes.BOTTOM_TAB)}
       />
     </View>
   );
