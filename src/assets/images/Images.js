@@ -5,6 +5,10 @@ const Images = {
   WORK: require('./work.png'),
   VOLUME: require('./volume.png'),
   DIET: require('./Diet.png'),
+  BELL: require('./bell.png'),
+  DP: require('./dp.jpg'),
+  SEARCH: require('./search.png'),
+  RECORDER: require('./recorder.png'),
 };
 
 export default Images;
