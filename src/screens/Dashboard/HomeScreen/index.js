@@ -1,9 +1,10 @@
-import {View, Text, SafeAreaView, ScrollView, StyleSheet} from 'react-native';
+import { View, Text, SafeAreaView, ScrollView, StyleSheet, Platform } from 'react-native';
 import React from 'react';
-import {useDispatch} from 'react-redux';
-import {setUser} from '../../../redux/Reducers/AuthReducer';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../../redux/Reducers/AuthReducer';
 import CustomizeHeader from '../../../components/CustomizeHeader';
 import GraphBar from '../../../components/GraphBar';
+import { Colors } from '../../../assets';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -11,7 +12,7 @@ const HomeScreen = () => {
     dispatch(setUser(null));
   };
   return (
-    <SafeAreaView>
+    <View style={{ paddingTop: Platform.OS === "ios" ? 50 : 0, backgroundColor: Colors.tabbgclr, flex: 1 }}>
       <CustomizeHeader isVisible={true} />
       <ScrollView contentContainerStyle={styles.container}>
         <GraphBar value={75} maxValue={100} color="tomato" />
@@ -19,7 +20,7 @@ const HomeScreen = () => {
         <GraphBar value={25} maxValue={100} color="green" />
         <GraphBar value={90} maxValue={100} color="purple" />
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -30,4 +31,4 @@ const styles = StyleSheet.create({
     padding: 20,
   },
 });
-export {HomeScreen};
+export { HomeScreen };

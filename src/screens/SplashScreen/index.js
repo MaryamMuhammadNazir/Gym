@@ -8,7 +8,7 @@ useNavigation;
 const Splash = () => {
   const navigation = useNavigation();
   setTimeout(() => {
-    navigation.replce(Routes.BOTTOM_TAB);
+    navigation.replace(Routes.BOTTOM_TAB);
   }, 5000);
 
   return (
@@ -17,6 +17,7 @@ const Splash = () => {
         source={Animations.SPLASH_ANIMATION}
         autoPlay={false}
         resizeMode="cover"
+        style={{ flex: 1, height: 200, width: 200, resizeMode: "cover", justifyContent: "center", alignItems: "center" }}
         onAnimationFinish={navigation.navigate(Routes.BOTTOM_TAB)}
       />
     </View>

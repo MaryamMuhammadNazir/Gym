@@ -25,7 +25,7 @@ export default function BottomTabNavigator({ navigation }) {
       right: 0,
       left: 0,
       elevation: 0,
-      height: 50,
+      height: Platform.OS === "android" ? 50 : 80,
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: Colors.tabbgclr,
@@ -33,13 +33,13 @@ export default function BottomTabNavigator({ navigation }) {
   };
 
   return (
-    <SafeAreaView style={styles.MainView}>
+    <View style={styles.MainView}>
       <View>
-        {/* {Platform.OS === "ios"&& (
-          <StatusBar barStyle="dark-content" />
-        ) */}
-        <StatusBar barStyle="light-content" backgroundColor={Colors.tabbgclr} />
-        {/* )} */}
+        {Platform.OS === "ios" ? (
+          <StatusBar barStyle="light-content" backgroundColor={Colors.tabbgclr} />) : (
+
+          <StatusBar barStyle="light-content" backgroundColor={Colors.tabbgclr} />
+        )}
       </View>
       <Tab.Navigator screenOptions={screenOptions}>
         <Tab.Screen
@@ -213,7 +213,7 @@ export default function BottomTabNavigator({ navigation }) {
           }}
         />
       </Tab.Navigator>
-    </SafeAreaView >
+    </View >
   );
 }
 const styles = StyleSheet.create({
