@@ -10,5 +10,6 @@ const Routes = {
   AUTH_STACK: 'AUTH_STACK',
   SPLASH_SCREEN: 'SPLASH_SCREEN',
   BOTTOM_TAB: 'BOTTOM_TAB',
+  SPREADCLR: 'SPREADCLR',
 };
 export default Routes;

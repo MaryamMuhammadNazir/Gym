@@ -1,25 +1,40 @@
-import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import {StyleSheet, StatusBar, View, Text} from 'react-native';
+import React, {useEffect} from 'react';
 import LottieView from 'lottie-react-native';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import Routes from '../../navigation/Routes';
 import Animations from '../../assets/animations/Animations';
-useNavigation;
+import {Colors} from '../../assets';
+import {WP, HP} from '../../utility/ResponsiveSize';
+
 const Splash = () => {
   const navigation = useNavigation();
-  setTimeout(() => {
-    navigation.replace(Routes.BOTTOM_TAB);
-  }, 5000);
+
+  useEffect(() => {
+    StatusBar.setHidden(true);
+
+    // Navigate to SPREADCLR after 3 seconds
+    setTimeout(() => {
+      navigation.replace(Routes.SPREADCLR);
+    }, 3000);
+
+    return () => {
+      StatusBar.setHidden(false);
+    };
+  }, [navigation]);
 
   return (
     <View style={styles.mainView}>
       <LottieView
         source={Animations.SPLASH_ANIMATION}
-        autoPlay={false}
+        autoPlay={true}
         resizeMode="cover"
-        style={{ flex: 1, height: 200, width: 200, resizeMode: "cover", justifyContent: "center", alignItems: "center" }}
-        onAnimationFinish={navigation.navigate(Routes.BOTTOM_TAB)}
+        style={styles.lottieView}
       />
+      <Text style={[styles.text, {marginTop: HP(5)}]}>
+        Look in mirror, that's your competition
+      </Text>
+      <Text style={styles.text}>-john Assaraf</Text>
     </View>
   );
 };
@@ -30,6 +45,19 @@ const styles = StyleSheet.create({
   mainView: {
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
     margin: 0,
+    backgroundColor: Colors.tabbgclr,
+  },
+  lottieView: {
+    width: WP(30), // Adjust the width to 50% of the screen width
+    height: HP(15), // Adjust the height to 30% of the screen height
+    resizeMode: 'cover',
+  },
+  text: {
+    // Adjust the margin top to 3% of the screen height
+    fontSize: WP(4), // Adjust the font size to 4% of the screen width
+    color: Colors.white,
+    textAlign: 'center',
   },
 });

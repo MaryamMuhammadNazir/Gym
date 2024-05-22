@@ -1,17 +1,27 @@
-import { Platform, StatusBar, Dimensions } from "react-native";
-import UtilityMethods from "./UtilityMethods";
+import {Platform, StatusBar, Dimensions} from 'react-native';
+import UtilityMethods from './UtilityMethods';
 
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
-const { height, width } = Dimensions.get("window");
+export const WP = width => {
+  return wp(width);
+};
+export const HP = height => {
+  return hp(height);
+};
+
+const {height, width} = Dimensions.get('window');
 const standardLength = width > height ? width : height;
 const offset =
-  width > height ? 0 : Platform.OS === "ios" ? 78 : StatusBar.currentHeight; // iPhone X style SafeAreaView size in portrait
+  width > height ? 0 : Platform.OS === 'ios' ? 78 : StatusBar.currentHeight; // iPhone X style SafeAreaView size in portrait
 
 const deviceHeight =
-  UtilityMethods.isIphoneX() || Platform.OS === "android"
+  UtilityMethods.isIphoneX() || Platform.OS === 'android'
     ? standardLength - offset
     : standardLength;
-
 
 export function RFPercentage(percent) {
   const heightPercent = (percent * deviceHeight) / 100;

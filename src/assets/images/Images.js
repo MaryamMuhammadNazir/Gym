@@ -9,6 +9,8 @@ const Images = {
   DP: require('./dp.jpg'),
   SEARCH: require('./search.png'),
   RECORDER: require('./recorder.png'),
+  SECURE: require('./secure.png'),
+  DOWN: require('./DownArrow.png'),
 };
 
 export default Images;

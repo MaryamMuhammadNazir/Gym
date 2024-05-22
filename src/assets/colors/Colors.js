@@ -1,6 +1,6 @@
 const Colors = {
   // EXAMPLE: require("your path") | File
-  primary: 'rgb(236,254,75)',
+  primary: 'rgb(251,212,46)',
   tabbgclr: 'rgb(23,21,23)',
   white: '#ffff',
 };

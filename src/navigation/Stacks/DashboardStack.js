@@ -8,10 +8,12 @@ const Stack = createNativeStackNavigator();
 
 const DashboardStack = () => {
   return (
-    <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name={Routes.SPLASH_SCREEN} component={Splash} />
-      <Stack.Screen name={Routes.HOME_SCREEN} component={BottomTab} />
-    </Stack.Navigator>
+    <>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name={Routes.SPLASH_SCREEN} component={Splash} />
+        <Stack.Screen name={Routes.HOME_SCREEN} component={BottomTab} />
+      </Stack.Navigator>
+    </>
   );
 };
 
