@@ -1,12 +1,4 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Platform,
-  Image,
-} from 'react-native';
+import {View, Text, ScrollView, Platform, Image} from 'react-native';
 import React from 'react';
 import {useDispatch} from 'react-redux';
 import {setUser} from '../../../redux/Reducers/AuthReducer';
@@ -15,8 +7,9 @@ import GraphBar from '../../../components/GraphBar';
 import CustomHeading from '../../../components/CustomHeading';
 import {Colors, HalfCircleCalorieTracker, Images} from '../../../assets';
 import {WP, HP} from '../../../utility/ResponsiveSize'; // Import WP and HP
-
+import LinearGradient from 'react-native-linear-gradient';
 import Moment from 'moment'; // Import Moment
+import styles from './styles';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -72,51 +65,20 @@ const HomeScreen = () => {
             <GraphBar value={10} color="purple" day="MOn" />
           </View>
         </View>
-        <HalfCircleCalorieTracker consumed={600} goal={1200} />
+        {/*half circle */}
+        <View style={styles.speedometerContainer}>
+          <View style={styles.halfCircleContainer}>
+            <LinearGradient
+              colors={['red', 'blue']}
+              start={{x: 0, y: 0}}
+              end={{x: 1, y: 0}}
+              style={styles.halfCircleGradient}
+            />
+          </View>
+        </View>
       </ScrollView>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    // flexDirection: 'row',
-    justifyContent: 'space-around',
-    padding: WP(5),
-    // alignItems: 'center',
-    backgroundColor: 'grey',
-    opacity: 0.7,
-    paddingHorizontal: WP(3),
-    borderRadius: WP(5),
-  },
-  contentContainerStyle: {
-    paddingHorizontal: WP(5),
-    paddingBottom: HP(3),
-    flex: 1,
-  },
-  dateText: {
-    fontSize: WP(3), // Example usage of WP for font size
-    alignContent: 'center',
-    color: Colors.white,
-    justifyContent: 'flex-start',
-  },
-  barConatianer: {
-    flexDirection: 'row',
-    width: '100%',
-    justifyContent: 'space-between',
-  },
-  weekContainer: {
-    borderRadius: WP(5),
-    backgroundColor: Colors.tabbgclr,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: HP(1),
-    alignItems: 'center',
-  },
-  downArrow: {
-    height: 7,
-    width: 10,
-    resizeMode: 'cover',
-  },
-});
 export {HomeScreen};
