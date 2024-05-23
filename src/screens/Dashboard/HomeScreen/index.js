@@ -13,7 +13,7 @@ import {setUser} from '../../../redux/Reducers/AuthReducer';
 import CustomizeHeader from '../../../components/CustomizeHeader';
 import GraphBar from '../../../components/GraphBar';
 import CustomHeading from '../../../components/CustomHeading';
-import {Colors, Images} from '../../../assets';
+import {Colors, HalfCircleCalorieTracker, Images} from '../../../assets';
 import {WP, HP} from '../../../utility/ResponsiveSize'; // Import WP and HP
 
 import Moment from 'moment'; // Import Moment
@@ -72,6 +72,7 @@ const HomeScreen = () => {
             <GraphBar value={10} color="purple" day="MOn" />
           </View>
         </View>
+        <HalfCircleCalorieTracker consumed={600} goal={1200} />
       </ScrollView>
     </View>
   );
@@ -91,6 +92,7 @@ const styles = StyleSheet.create({
   contentContainerStyle: {
     paddingHorizontal: WP(5),
     paddingBottom: HP(3),
+    flex: 1,
   },
   dateText: {
     fontSize: WP(3), // Example usage of WP for font size

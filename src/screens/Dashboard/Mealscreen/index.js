@@ -3,19 +3,14 @@ import React from 'react';
 import CustomizeHeader from '../../../components/CustomizeHeader';
 import {Colors} from '../../../assets';
 import {WP, HP} from '../../../utility/ResponsiveSize';
+import Wrapper from '../../../components/Wrapper';
 
 const MealScreen = () => {
   return (
-    <View
-      style={{
-        paddingTop: Platform.OS === 'ios' ? HP(5) : 0,
-        backgroundColor: Colors.tabbgclr,
-        flex: 1,
-      }}>
-      <CustomizeHeader isVisible={false} />
+    <Wrapper isVisible={false}>
       <ScrollView
         contentContainerStyle={styles.contentContainerStyle}></ScrollView>
-    </View>
+    </Wrapper>
   );
 };
 

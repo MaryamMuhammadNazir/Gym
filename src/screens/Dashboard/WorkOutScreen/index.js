@@ -4,16 +4,11 @@ import CustomizeHeader from '../../../components/CustomizeHeader';
 import {Colors} from '../../../assets';
 import {WP, HP} from '../../../utility/ResponsiveSize';
 import CustomHeading from '../../../components/CustomHeading';
+import Wrapper from '../../../components/Wrapper';
 
 const Workout = () => {
   return (
-    <View
-      style={{
-        paddingTop: Platform.OS === 'ios' ? HP(5) : 0,
-        backgroundColor: Colors.tabbgclr,
-        flex: 1,
-      }}>
-      <CustomizeHeader isVisible={false} />
+    <Wrapper isVisible={true}>
       <View style={styles.contentContainerStyle}>
         <CustomHeading
           mainText="Work outs"
@@ -23,7 +18,7 @@ const Workout = () => {
 
       <ScrollView
         contentContainerStyle={styles.contentContainerStyle}></ScrollView>
-    </View>
+    </Wrapper>
   );
 };
 
