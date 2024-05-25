@@ -10,6 +10,7 @@ import {WP, HP} from '../../../utility/ResponsiveSize'; // Import WP and HP
 import LinearGradient from 'react-native-linear-gradient';
 import Moment from 'moment'; // Import Moment
 import styles from './styles';
+import Button from '../../../components/CustomButton';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -17,8 +18,11 @@ const HomeScreen = () => {
     dispatch(setUser(null));
   };
 
+  const onpressbtn = () => {
+    console.log('btn preesses');
+  };
   // Get today's date using Moment
-  // const todayDate = Moment().format('MMM D, YYYY');
+  // const todayDate = Moment().format('MMMD, YYYY');
   const todayDate = Moment().format('dddd, MMM Do');
   return (
     <View
@@ -65,17 +69,41 @@ const HomeScreen = () => {
             <GraphBar value={10} color="purple" day="MOn" />
           </View>
         </View>
-        {/*half circle */}
-        <View style={styles.speedometerContainer}>
-          <View style={styles.halfCircleContainer}>
-            <LinearGradient
-              colors={['red', 'blue']}
-              start={{x: 0, y: 0}}
-              end={{x: 1, y: 0}}
-              style={styles.halfCircleGradient}
+        <View style={{marginVertical: HP(3)}}>
+          <Text
+            style={{
+              color: Colors.white,
+              fontSize: HP(2.5),
+            }}>
+            Today's routine
+          </Text>
+          <View
+            style={{
+              flexDirection: 'row',
+              backgroundColor: Colors.cardclr,
+              flexWrap: 'wrap',
+              borderRadius: 10,
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}>
+            <Text
+              style={{
+                fontSize: HP(1.75),
+                color: Colors.white,
+                marginHorizontal: HP(2),
+              }}>
+              7 exercises, 3 sets, 8 reps
+            </Text>
+            <Button
+              buttonTitle={"Let's go"}
+              onPress={() => {
+                onpressbtn();
+              }}
             />
           </View>
         </View>
+        {/*half circle */}
+        <View style={styles.speedometerContainer}></View>
       </ScrollView>
     </View>
   );

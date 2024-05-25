@@ -1,61 +1,31 @@
 import React from 'react';
-import {Pressable, ActivityIndicator, StyleSheet, Text} from 'react-native';
-import Label from '../Label';
-import {styles} from './ButtonStyle';
+import {TouchableOpacity, Text, StyleSheet} from 'react-native';
 import {Colors} from '../../assets';
+import {HP, WP} from '../../utility/ResponsiveSize';
 
-const Button = ({
-  style,
-  children,
-  disabled,
-  onPress,
-  labelStyle,
-  loading,
-  fontSize,
-  color,
-}) => {
+const Button = ({onPress, buttonTitle}) => {
   return (
-    <Button
-      onPress={onPress}
-      //   disabled={loading || disabled}
-      style={[
-        styles.main,
-        {
-          flexDirection: 'row',
-          backgroundColor: Colors.primary,
-          //   width: '90%',
-          ...style,
-        },
-      ]}>
-      {/* {loading ? (
-        <ActivityIndicator
-          style={{marginLeft: 5}}
-          size="small"
-          color="#F0F0F0"
-        />
-      ) : ( */}
-      <Text style={[labelStyle, styles.label, {color, fontSize}]}>
-        {children}
-      </Text>
-      {/* )} */}
-    </Button>
+    <TouchableOpacity style={styles.button} onPress={onPress}>
+      <Text style={styles.buttonText}>{buttonTitle}</Text>
+    </TouchableOpacity>
   );
 };
-import {StyleSheet} from 'react-native';
-
-export const styles = StyleSheet.create({
-  main: {
-    paddingVertical: 13,
-    paddingHorizontal: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 30,
-  },
-  label: {
-    color: 'white',
-    fontSize: 14,
-    fontFamily: 'Montserrat-Bold',
-  },
-});
 
 export default Button;
+
+const styles = StyleSheet.create({
+  button: {
+    backgroundColor: Colors.primary,
+    paddingVertical: HP(1), // Example: 2% of screen height
+    paddingHorizontal: WP(5), // Example: 5% of screen width
+    borderRadius: WP(2), // Example: 2% of screen width for border radius
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: WP(2.5), // Example: 2.5% of screen width for margin
+  },
+  buttonText: {
+    color: '#FFFFFF',
+    fontSize: WP(4), // Example: 4% of screen width for font size
+    fontWeight: 'bold',
+  },
+});

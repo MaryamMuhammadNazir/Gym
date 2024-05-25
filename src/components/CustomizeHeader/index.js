@@ -81,8 +81,8 @@ const styles = StyleSheet.create({
   searchContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'grey',
-    opacity: 0.7, // 70% transparency
+    backgroundColor: Colors.cardclr,
+    // opacity: 0.7, // 70% transparency
     borderRadius: 10,
     paddingHorizontal: 10,
     marginLeft: 10,

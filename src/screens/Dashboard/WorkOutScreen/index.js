@@ -1,32 +1,81 @@
-import {StyleSheet, Platform, View, ScrollView} from 'react-native';
-import React from 'react';
+import {
+  StyleSheet,
+  Platform,
+  View,
+  ScrollView,
+  TouchableOpacity,
+  Text,
+} from 'react-native';
+import React, {useState} from 'react';
 import CustomizeHeader from '../../../components/CustomizeHeader';
-import {Colors} from '../../../assets';
-import {WP, HP} from '../../../utility/ResponsiveSize';
+import {Colors, data} from '../../../assets';
+import {WP, HP} from '../../../utility/ResponsiveSize'; // Import WP and HP
 import CustomHeading from '../../../components/CustomHeading';
-import Wrapper from '../../../components/Wrapper';
 
 const Workout = () => {
+  const [selectedItem, setSelectedText] = useState('body building');
+
   return (
-    <Wrapper isVisible={true}>
-      <View style={styles.contentContainerStyle}>
+    <View
+      style={[
+        styles.container,
+        {paddingTop: Platform.OS === 'ios' ? HP(5) : 0},
+      ]}>
+      <CustomizeHeader isVisible={false} />
+      <ScrollView contentContainerStyle={styles.contentContainerStyle}>
         <CustomHeading
-          mainText="Work outs"
+          mainText="Work Out"
           subText="We have videos curated for you"
         />
-      </View>
-
-      <ScrollView
-        contentContainerStyle={styles.contentContainerStyle}></ScrollView>
-    </Wrapper>
+        <ScrollView
+          bounces={false}
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.scrollView}>
+          {data?.items?.map((item, index) => (
+            <TouchableOpacity
+              key={index}
+              style={[
+                styles.item,
+                {
+                  borderColor:
+                    selectedItem === item ? Colors.primary : Colors.white,
+                  backgroundColor:
+                    selectedItem === item ? Colors.primary : Colors.tabbgclr,
+                },
+              ]}
+              onPress={() => setSelectedText(item)}>
+              <Text style={styles.itemText}>{item}</Text>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 
 export default Workout;
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: Colors.tabbgclr,
+    flex: 1,
+  },
   contentContainerStyle: {
     paddingHorizontal: WP(5),
     paddingBottom: HP(3),
+  },
+  scrollView: {
+    paddingVertical: HP(2),
+  },
+  item: {
+    borderWidth: 1,
+    borderRadius: WP(2),
+    marginHorizontal: WP(2),
+    padding: HP(1),
+  },
+  itemText: {
+    color: Colors.white,
+    padding: WP(0.25),
   },
 });

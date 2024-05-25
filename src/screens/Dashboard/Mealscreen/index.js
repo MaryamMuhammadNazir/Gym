@@ -3,22 +3,39 @@ import React from 'react';
 import CustomizeHeader from '../../../components/CustomizeHeader';
 import {Colors} from '../../../assets';
 import {WP, HP} from '../../../utility/ResponsiveSize';
-import Wrapper from '../../../components/Wrapper';
+import CustomHeading from '../../../components/CustomHeading';
 
 const MealScreen = () => {
   return (
-    <Wrapper isVisible={false}>
-      <ScrollView
-        contentContainerStyle={styles.contentContainerStyle}></ScrollView>
-    </Wrapper>
+    <View
+      style={[
+        styles.container,
+        {paddingTop: Platform.OS === 'ios' ? HP(5) : 0},
+      ]}>
+      <CustomizeHeader isVisible={false} />
+      <View style={styles.contentContainer}>
+        <CustomHeading
+          mainText="We are still building"
+          subText="We have videos curated for you"
+        />
+      </View>
+    </View>
   );
 };
 
 export default MealScreen;
 
 const styles = StyleSheet.create({
-  contentContainerStyle: {
-    paddingHorizontal: WP(5),
-    paddingBottom: HP(3),
+  container: {
+    backgroundColor: Colors.tabbgclr,
+    flex: 1,
+  },
+  contentContainer: {
+    padding: WP(5),
+    paddingHorizontal: WP(3),
+    borderRadius: WP(5),
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
   },
 });

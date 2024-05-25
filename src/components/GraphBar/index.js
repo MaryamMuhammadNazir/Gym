@@ -36,7 +36,7 @@ const GraphBar = ({value, day}) => {
       <Image
         source={Images.SECURE}
         style={styles.img}
-        tintColor={Colors.primary}
+        tintColor={Colors.white}
       />
       <Text style={{color: Colors.white}}>{day}</Text>
     </View>
