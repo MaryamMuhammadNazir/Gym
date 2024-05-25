@@ -11,6 +11,9 @@ const Images = {
   RECORDER: require('./recorder.png'),
   SECURE: require('./secure.png'),
   DOWN: require('./DownArrow.png'),
+  PLUS: require('./plus.png'),
+  PLAYFILLED: require('./playFilled.png'),
+  PLAY: require('./play.png'),
 };
 
 export default Images;
