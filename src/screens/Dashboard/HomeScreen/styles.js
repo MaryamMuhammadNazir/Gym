@@ -56,6 +56,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 20,
   },
+  routineText: {
+    color: Colors.white,
+    fontSize: HP(2.5),
+  },
+  exerciseContainer: {
+    flexDirection: 'row',
+    backgroundColor: Colors.cardclr,
+    flexWrap: 'wrap',
+    borderRadius: 10,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  exerciseText: {
+    fontSize: HP(1.75),
+    color: Colors.white,
+    marginHorizontal: HP(2),
+  },
 });
 
 export default styles;

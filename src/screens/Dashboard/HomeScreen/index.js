@@ -11,13 +11,12 @@ import LinearGradient from 'react-native-linear-gradient';
 import Moment from 'moment'; // Import Moment
 import styles from './styles';
 import Button from '../../../components/CustomButton';
-
 const HomeScreen = () => {
   const dispatch = useDispatch();
   const loginUser = () => {
     dispatch(setUser(null));
   };
-
+  const snapPoints = ['60%'];
   const onpressbtn = () => {
     console.log('btn preesses');
   };
@@ -70,30 +69,9 @@ const HomeScreen = () => {
           </View>
         </View>
         <View style={{marginVertical: HP(3)}}>
-          <Text
-            style={{
-              color: Colors.white,
-              fontSize: HP(2.5),
-            }}>
-            Today's routine
-          </Text>
-          <View
-            style={{
-              flexDirection: 'row',
-              backgroundColor: Colors.cardclr,
-              flexWrap: 'wrap',
-              borderRadius: 10,
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}>
-            <Text
-              style={{
-                fontSize: HP(1.75),
-                color: Colors.white,
-                marginHorizontal: HP(2),
-              }}>
-              7 exercises, 3 sets, 8 reps
-            </Text>
+          <Text style={styles.routineText}>Today's routine</Text>
+          <View style={styles.exerciseContainer}>
+            <Text style={styles.exerciseText}>7 exercises, 3 sets, 8 reps</Text>
             <Button
               buttonTitle={"Let's go"}
               onPress={() => {
