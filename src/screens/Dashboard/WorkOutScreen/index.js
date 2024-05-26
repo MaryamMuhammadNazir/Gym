@@ -14,7 +14,6 @@ import {WP, HP} from '../../../utility/ResponsiveSize'; // Import WP and HP
 import CustomHeading from '../../../components/CustomHeading';
 import Video from 'react-native-video';
 import {styles} from './styles';
-import FullScreenVideo from '../FullScreen';
 import {useNavigation} from '@react-navigation/native';
 import Routes from '../../../navigation/Routes';
 
