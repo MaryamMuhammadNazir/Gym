@@ -5,3 +5,4 @@ export * from './CustomHeading';
 export * from './Wrapper';
 export * from './CustomScrollFrame';
 export * from './CustomButton';
+export * from './CustomBottomSheet';

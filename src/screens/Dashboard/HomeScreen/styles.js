@@ -73,6 +73,9 @@ const styles = StyleSheet.create({
     color: Colors.white,
     marginHorizontal: HP(2),
   },
+  image: {},
+  textContainer: {},
+  text: {},
 });
 
 export default styles;

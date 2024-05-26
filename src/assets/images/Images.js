@@ -14,6 +14,7 @@ const Images = {
   PLUS: require('./plus.png'),
   PLAYFILLED: require('./playFilled.png'),
   PLAY: require('./play.png'),
+  YOGAGIRL: require('./yogaGirl.png'),
 };
 
 export default Images;
