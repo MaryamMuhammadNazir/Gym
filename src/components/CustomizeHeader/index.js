@@ -11,6 +11,8 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import {useNavigation} from '@react-navigation/native';
+import Routes from '../../navigation/Routes';
 
 // Calculate sizes based on responsive screen dimensions
 const imageSize = wp('11%');
@@ -19,13 +21,20 @@ const recorderIconSize = wp('7%');
 const paddingHorizontal = wp('5%');
 
 const CustomizeHeader = ({isVisible, onpressNotification, inputText}) => {
+  const navigation = useNavigation();
+  const onPress = () => {
+    navigation.navigate(Routes.EDITPROFLE);
+    console.log('ewffr pressed');
+  };
   return (
     <View style={styles.container}>
       <View style={{flexDirection: 'row', width: '80%'}}>
-        <Image
-          source={Images.DP}
-          style={[styles.imgStyle, {width: imageSize, height: imageSize}]}
-        />
+        <TouchableOpacity onPress={onPress}>
+          <Image
+            source={Images.DP}
+            style={[styles.imgStyle, {width: imageSize, height: imageSize}]}
+          />
+        </TouchableOpacity>
         {isVisible && (
           <View style={styles.searchContainer}>
             <Image

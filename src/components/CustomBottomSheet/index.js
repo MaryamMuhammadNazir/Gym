@@ -1,22 +1,55 @@
-import React, {forwardRef} from 'react';
-import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
+import React, {forwardRef, useState} from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  StyleSheet,
+  Dimensions,
+} from 'react-native';
 import BottomSheet from '@gorhom/bottom-sheet';
 import {HP, WP} from '../../utility/ResponsiveSize';
 import {Colors, Images} from '../../assets';
-import {ProgressView} from '@react-native-community/progress-view';
-import {ImageSlider} from 'react-native-image-slider-banner'; // Uncomment if needed
-//
+import * as Progress from 'react-native-progress';
+import Carousel from 'react-native-reanimated-carousel'; // Import the Carousel component
+
 const CustomBottomSheet = forwardRef(
   (
     {snapPoints, handlePressEndSession, isImageSlideOpen, setImageSliderOpen},
     ref,
   ) => {
+    const [progress, setProgress] = useState(0.3);
+    const width = Dimensions.get('window').width;
+
+    const [images, setImages] = React.useState([
+      {
+        id: 0,
+        url: 'https://picsum.photos/id/1/200/300',
+      },
+      {
+        id: 0,
+        url: 'https://picsum.photos/id/2/200/300',
+      },
+      {
+        id: 0,
+        url: 'https://picsum.photos/id/3/200/300',
+      },
+      {
+        id: 0,
+        url: 'https://picsum.photos/id/4/200/300',
+      },
+      {
+        id: 0,
+        url: 'https://picsum.photos/id/5/200/300',
+      },
+    ]);
     const imagesURL = [
-      {img: require('../../assets/images/slidrImage.png')},
-      {img: require('../../assets/images/img.png')},
-      {img: require('../../assets/images/img.png')},
+      {id: 1, url: require('../../assets/images/img.png')},
+      {id: 1, url: require('../../assets/images/img.png')},
+      {id: 1, url: require('../../assets/images/img.png')},
+      // Add more objects for additional images if needed
     ];
-    const progress = 0.7;
+
     return (
       <BottomSheet ref={ref} snapPoints={snapPoints}>
         <View
@@ -41,34 +74,46 @@ const CustomBottomSheet = forwardRef(
                 </Text>
                 <Text>7 exercises, 3 sets, 8 reps</Text>
               </View>
-              {/* use here progress bar */}
-              {/* <ProgressView
-                style={{width: '80%', height: 20, marginVertical: HP(2)}}
-                progressTintColor={Colors.primary}
-                trackTintColor={Colors.grey}
+              {/* Use here the progress bar */}
+              <Progress.Bar
                 progress={progress}
-              /> */}
-              <View
-                style={{
-                  flex: 1,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
-                <ImageSlider
-                  data={imagesURL}
-                  localImg
-                  autoPlay={false}
-                  caroselImageContainerStyle={styles.caroselImageContainer}
-                  caroselImageStyle={styles.caroselImage}
-                  indicatorContainerStyle={styles.indicatorContainer}
-                  inActiveIndicatorStyle={styles.inActiveIndicator}
-                  closeIconColor="#fff"
-                  activeIndicatorStyle={styles.ActiveIndicator}
-                  preview={false}
-                  showIndicator={true}
+                width={300}
+                unfilledColor={Colors.tabbgclr}
+                borderWidth={0}
+                color={Colors.primary}
+                height={15}
+                borderRadius={20}
+              />
+              <View style={{flex: 1}}>
+                {/* Use the Carousel component here */}
+                <Carousel
+                  loop
+                  width={width}
+                  height={width / 2}
+                  autoPlay={true}
+                  scrollAnimationDuration={1000}
+                  onSnapToItem={index => console.log('current index:', index)}
+                  data={images}
+                  renderItem={({item}) => (
+                    <View
+                      style={{
+                        flex: 1,
+                        borderWidth: 1,
+                        justifyContent: 'center',
+                      }}>
+                      <Image
+                        source={{uri: item.url}}
+                        style={{
+                          width: 200,
+                          height: 200,
+                          resizeMode: 'contain',
+                        }}
+                      />
+                    </View>
+                  )}
                 />
-                <Text>Swipe when done to view next</Text>
               </View>
+              <Text>Swipe when done to view next</Text>
             </>
           ) : (
             <>
@@ -83,11 +128,7 @@ const CustomBottomSheet = forwardRef(
                   }}>
                   You're on a roll!
                 </Text>
-                <View
-                  style={{
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
+                <View style={{alignItems: 'center', justifyContent: 'center'}}>
                   <Text
                     style={{
                       width: '70%',
@@ -158,30 +199,3 @@ const CustomBottomSheet = forwardRef(
 );
 
 export default CustomBottomSheet;
-
-const styles = StyleSheet.create({
-  caroselImageContainer: {
-    alignSelf: 'center',
-    height: 100,
-    width: 100,
-  },
-  caroselImage: {
-    resizeMode: 'cover',
-    borderBottomRightRadius: 20,
-    borderBottomLeftRadius: 20,
-    borderRadius: HP(4),
-  },
-  indicatorContainer: {
-    position: 'absolute',
-    top: 10,
-  },
-  inActiveIndicator: {
-    width: 10,
-    height: 5,
-  },
-  ActiveIndicator: {
-    width: 40,
-    height: 5,
-    backgroundColor: Colors.cardclr,
-  },
-});

@@ -2,15 +2,13 @@ import React from 'react';
 import {Image, Platform, Text, View, StatusBar, StyleSheet} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import SplashScreen from '../../screens/SplashScreen';
 import Routes from '../Routes';
 import {HomeScreen} from '../../screens';
 import {Colors, Images} from '../../assets';
 import Workout from '../../screens/Dashboard/WorkOutScreen';
 import MealScreen from '../../screens/Dashboard/Mealscreen';
-import Sound from '../../screens/Dashboard/Sound';
-import {home} from '../../assets/icons';
-import {SafeAreaView} from 'react-native-safe-area-context';
+
+import SoundCustom from '../../screens/Dashboard/Sound';
 
 const Tab = createBottomTabNavigator();
 
@@ -177,8 +175,8 @@ export default function BottomTabNavigator({navigation}) {
           }}
         />
         <Tab.Screen
-          name={Routes.Sound}
-          component={Sound}
+          name={Routes.SOUND}
+          component={SoundCustom}
           options={{
             tabBarLabel: ({focused}) => {
               return (

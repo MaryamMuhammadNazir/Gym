@@ -1,19 +1,27 @@
+import React, {useState} from 'react';
 import {
-  StyleSheet,
   Platform,
   View,
   ScrollView,
   TouchableOpacity,
   Text,
+  Image,
+  ImageBackground,
 } from 'react-native';
-import React, {useState} from 'react';
 import CustomizeHeader from '../../../components/CustomizeHeader';
-import {Colors, data} from '../../../assets';
+import {Colors, Images, Videos, data} from '../../../assets';
 import {WP, HP} from '../../../utility/ResponsiveSize'; // Import WP and HP
 import CustomHeading from '../../../components/CustomHeading';
+import Video from 'react-native-video';
+import {styles} from './styles';
+import FullScreenVideo from '../FullScreen';
+import {useNavigation} from '@react-navigation/native';
+import Routes from '../../../navigation/Routes';
 
 const Workout = () => {
-  const [selectedItem, setSelectedText] = useState('body building');
+  const [selectedItem, setSelectedItem] = useState('body building');
+  const navigation = useNavigation();
+  const handlePress = () => {};
 
   return (
     <View
@@ -22,11 +30,14 @@ const Workout = () => {
         {paddingTop: Platform.OS === 'ios' ? HP(5) : 0},
       ]}>
       <CustomizeHeader isVisible={false} />
-      <ScrollView contentContainerStyle={styles.contentContainerStyle}>
+
+      <View style={{paddingHorizontal: WP(5)}}>
         <CustomHeading
           mainText="Work Out"
           subText="We have videos curated for you"
         />
+      </View>
+      <ScrollView contentContainerStyle={styles.contentContainerStyle}>
         <ScrollView
           bounces={false}
           horizontal={true}
@@ -44,38 +55,81 @@ const Workout = () => {
                     selectedItem === item ? Colors.primary : Colors.tabbgclr,
                 },
               ]}
-              onPress={() => setSelectedText(item)}>
+              onPress={() => {
+                setSelectedItem(item);
+              }}>
               <Text style={styles.itemText}>{item}</Text>
             </TouchableOpacity>
           ))}
         </ScrollView>
+        <View>
+          <Text style={styles.sectionTitle}>Continue Watching</Text>
+
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate(Routes.FULLSCREEN);
+            }}
+            style={styles.card1}>
+            <ImageBackground
+              borderRadius={HP(3)}
+              source={Images.THUMNAOL1}
+              style={styles.thumbnail}>
+              <View style={styles.videoInfoContainer}>
+                <Text style={styles.videoDuration}>05:20</Text>
+                <Image
+                  tintColor={Colors.white}
+                  source={Images.PLAYFILLED}
+                  style={styles.playIcon}
+                />
+              </View>
+            </ImageBackground>
+            <Text style={styles.videoTitle}>Squats and Plungum</Text>
+          </TouchableOpacity>
+        </View>
+        {/* Recommendation View */}
+        <View>
+          <Text style={styles.sectionTitle}>Recommendation</Text>
+          <View style={styles.recommendationContainer}>
+            <TouchableOpacity onPress={() => {}} style={styles.card}>
+              <ImageBackground
+                borderRadius={HP(3)}
+                source={Images.THUMNAOL1}
+                style={styles.thumbnail}>
+                <View style={styles.videoInfoContainer}>
+                  <Text style={styles.videoDuration}>05:20</Text>
+                  <Image
+                    tintColor={Colors.white}
+                    source={Images.PLAYFILLED}
+                    style={styles.playIcon}
+                  />
+                </View>
+              </ImageBackground>
+              <Text style={styles.videoTitle}>Squats</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => handlePress(3)}
+              style={styles.card}>
+              <ImageBackground
+                borderRadius={HP(3)}
+                source={Images.THUMNAOL1}
+                style={styles.thumbnail}>
+                <View style={styles.videoInfoContainer}>
+                  <Text style={styles.videoDuration}>05:20</Text>
+                  <Image
+                    tintColor={Colors.white}
+                    source={Images.PLAYFILLED}
+                    style={styles.playIcon}
+                  />
+                </View>
+              </ImageBackground>
+              <Text style={styles.videoTitle}>Plungum</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </ScrollView>
     </View>
   );
 };
 
 export default Workout;
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: Colors.tabbgclr,
-    flex: 1,
-  },
-  contentContainerStyle: {
-    paddingHorizontal: WP(5),
-    paddingBottom: HP(3),
-  },
-  scrollView: {
-    paddingVertical: HP(2),
-  },
-  item: {
-    borderWidth: 1,
-    borderRadius: WP(2),
-    marginHorizontal: WP(2),
-    padding: HP(1),
-  },
-  itemText: {
-    color: Colors.white,
-    padding: WP(0.25),
-  },
-});
