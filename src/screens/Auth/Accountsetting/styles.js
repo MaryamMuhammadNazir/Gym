@@ -1,12 +1,13 @@
-import {StyleSheet, Platform} from 'react-native';
-import {HP, WP} from '../../utility/ResponsiveSize';
-import {Colors} from '../../assets';
+import {StyleSheet} from 'react-native';
+import {Colors} from '../../../assets';
+import {HP, WP} from '../../../utility/ResponsiveSize';
 
 export const styles = StyleSheet.create({
   container: {
     paddingTop: Platform.OS === 'ios' ? HP(5) : HP(3),
     backgroundColor: Colors.tabbgclr,
     flex: 1,
+    alignItems: 'center',
   },
   contentContainer: {
     // padding: WP(5),
@@ -17,20 +18,21 @@ export const styles = StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
-    width: '90%',
+    width: '100%',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: WP(3),
-    marginBottom: HP(7),
+    marginBottom: HP(2),
+    flexWrap: 'wrap',
   },
   headerLeft: {
     flexWrap: 'wrap',
+    justifyContent: 'flex-end',
   },
   headerCenter: {
     flex: 1,
-    width: '80%',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
   },
   headerImage: {
     height: 30,
@@ -39,7 +41,7 @@ export const styles = StyleSheet.create({
   },
   headerText: {
     color: Colors.white,
-    fontSize: 30,
+    fontSize: 20,
   },
   row: {
     flexDirection: 'row',
@@ -61,14 +63,29 @@ export const styles = StyleSheet.create({
     resizeMode: 'contain',
     marginHorizontal: HP(1),
   },
-  switchContainer: {
-    marginHorizontal: HP(1),
+  middleView: {height: '75%'},
+  chngeTxt: {
+    color: Colors.white,
+    alignSelf: 'center',
+    fontSize: HP(1.75),
+    paddingVertical: HP(1),
+    paddingHorizontal: HP(2),
   },
-  switchInnerCircle: {
+  dpView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    flexWrap: 'wrap',
     alignItems: 'center',
-    justifyContent: 'center',
+    paddingHorizontal: HP(1),
+    marginVertical: HP(2),
   },
-  switchStyle: {
-    marginHorizontal: HP(2),
+  bottomView: {backgroundColor: Colors.cardclr, borderRadius: HP(1)},
+  deletetxt: {
+    color: Colors.white,
+    alignSelf: 'center',
+    fontSize: HP(1.75),
+    paddingVertical: HP(1),
+    paddingHorizontal: HP(2),
   },
 });

@@ -6,9 +6,6 @@ import Routes from './Routes';
 import BottomTab from './BottomTabNavigation/index.js';
 import Splash from '../screens/SplashScreen/index.js';
 import SpreadColorScreen from '../screens/SplashScreen/spreadcolor.js';
-import {StatusBar} from 'react-native';
-import {EditProfileStack} from './Stacks/EditProfileStack.js';
-import {FullScreenStack} from './Stacks/FullScreenStack.js';
 const Stack = createNativeStackNavigator();
 const RootStack = () => {
   let isLogin = useSelector(state => state.auth?.user);
@@ -27,12 +24,9 @@ const RootStack = () => {
           <Stack.Screen name={Routes.SPLASH_SCREEN} component={Splash} />
           <Stack.Screen name={Routes.SPREADCLR} component={SpreadColorScreen} />
           <Stack.Screen name={Routes.BOTTOM_TAB} component={BottomTab} />
-          <Stack.Screen name={Routes.EDITPROFLE} component={EditProfileStack} />
         </>
       ) : (
         <Stack.Screen name={Routes.BOTTOM_TAB} component={BottomTab} />
-        // <Stack.Screen name={Routes.BOTTOM_TAB} component={BottomTab} />
-        // <Stack.Screen name={Routes.AUTH_STACK} component={AuthStack} />
       )}
     </Stack.Navigator>
   );

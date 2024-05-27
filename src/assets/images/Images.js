@@ -16,6 +16,9 @@ const Images = {
   PLAY: require('./play.png'),
   YOGAGIRL: require('./yogaGirl.png'),
   THUMNAOL1: require('./thumbnail1.png'),
+  LEFTARROW: require('./arrowLeft.png'),
+  RIGHTARROW: require('./rightarrow.png'),
+  CLOSE: require('./cross.png'),
 };
 
 export default Images;
