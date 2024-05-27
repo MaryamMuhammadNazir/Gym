@@ -1,6 +1,6 @@
-import {Platform, StyleSheet} from 'react-native';
-import {HP, WP} from '../../../utility/ResponsiveSize';
-import {Colors} from '../../../assets';
+import { Platform, StyleSheet } from 'react-native';
+import { HP, WP } from '../../../utility/ResponsiveSize';
+import { Colors } from '../../../assets';
 
 export const styles = StyleSheet.create({
   container: {
@@ -24,6 +24,8 @@ export const styles = StyleSheet.create({
   },
   item: {
     padding: HP(1),
+
+    backgroundColor: "red"
   },
   itemText: {
     color: Colors.white,
@@ -31,7 +33,7 @@ export const styles = StyleSheet.create({
   },
   importedMusic: {
     flex: 1,
-    backgroundColor: 'red',
+    // backgroundColor: 'red',
   },
   connectAppsContainer: {
     flex: 1,
@@ -64,7 +66,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  ytMusicTxt: {color: Colors.white, fontSize: HP(1.5), marginTop: HP(1)},
+  ytMusicTxt: { color: Colors.white, fontSize: HP(1.5), marginTop: HP(1) },
   playButtonImage: {
     height: 40,
     width: 40,
