@@ -7,10 +7,11 @@ import {
   Text,
   Image,
   ImageBackground,
+  Modal,
 } from 'react-native';
 import CustomizeHeader from '../../../components/CustomizeHeader';
-import {Colors, Images, Videos, data} from '../../../assets';
-import {WP, HP} from '../../../utility/ResponsiveSize'; // Import WP and HP
+import {Colors, Images, data} from '../../../assets';
+import {WP, HP} from '../../../utility/ResponsiveSize';
 import CustomHeading from '../../../components/CustomHeading';
 import Video from 'react-native-video';
 import {styles} from './styles';
@@ -19,8 +20,14 @@ import Routes from '../../../navigation/Routes';
 
 const Workout = () => {
   const [selectedItem, setSelectedItem] = useState('body building');
+  const [modalVisible, setModalVisible] = useState(false);
+  const [videoSource, setVideoSource] = useState(null);
   const navigation = useNavigation();
-  const handlePress = () => {};
+
+  const handleThumbnailPress = videoSrc => {
+    setVideoSource(videoSrc);
+    setModalVisible(true);
+  };
 
   return (
     <View
@@ -65,9 +72,7 @@ const Workout = () => {
           <Text style={styles.sectionTitle}>Continue Watching</Text>
 
           <TouchableOpacity
-            onPress={() => {
-              navigation.navigate(Routes.FULLSCREEN);
-            }}
+            onPress={() => handleThumbnailPress(Videos.SQUATS_AND_PLUNGUM)} // Replace with actual video source
             style={styles.card1}>
             <ImageBackground
               borderRadius={HP(3)}
@@ -89,7 +94,9 @@ const Workout = () => {
         <View>
           <Text style={styles.sectionTitle}>Recommendation</Text>
           <View style={styles.recommendationContainer}>
-            <TouchableOpacity onPress={() => {}} style={styles.card}>
+            <TouchableOpacity
+              onPress={() => handleThumbnailPress(Videos.SQUATS)} // Replace with actual video source
+              style={styles.card}>
               <ImageBackground
                 borderRadius={HP(3)}
                 source={Images.THUMNAOL1}
@@ -107,7 +114,7 @@ const Workout = () => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => handlePress(3)}
+              onPress={() => handleThumbnailPress(Videos.PLUNGUM)} // Replace with actual video source
               style={styles.card}>
               <ImageBackground
                 borderRadius={HP(3)}
@@ -127,6 +134,28 @@ const Workout = () => {
           </View>
         </View>
       </ScrollView>
+
+      {/* Modal to display video */}
+      <Modal
+        visible={modalVisible}
+        transparent={true}
+        onRequestClose={() => setModalVisible(false)}>
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Video
+              source={videoSource}
+              style={styles.video}
+              controls={true}
+              resizeMode="contain"
+            />
+            <TouchableOpacity
+              style={styles.closeButton}
+              onPress={() => setModalVisible(false)}>
+              <Text style={styles.closeButtonText}>Close</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };

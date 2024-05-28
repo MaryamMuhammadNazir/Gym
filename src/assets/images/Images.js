@@ -19,6 +19,10 @@ const Images = {
   LEFTARROW: require('./arrowLeft.png'),
   RIGHTARROW: require('./rightarrow.png'),
   CLOSE: require('./cross.png'),
+  MAP: require('./map.png'),
+  CIRCLE: require('./cirle.png'),
+  EMPTY: require('./empty.png'),
+  MUSIC: require('./musicIcon.jpeg'),
 };
 
 export default Images;

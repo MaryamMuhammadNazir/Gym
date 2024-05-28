@@ -33,8 +33,8 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   headerImage: {
-    height: 30,
-    width: 30,
+    height: 20,
+    width: 20,
     resizeMode: 'contain',
   },
   headerText: {
@@ -62,13 +62,13 @@ export const styles = StyleSheet.create({
     marginHorizontal: HP(1),
   },
   switchContainer: {
-    marginHorizontal: HP(1),
+    marginHorizontal: HP(0),
   },
   switchInnerCircle: {
     alignItems: 'center',
     justifyContent: 'center',
   },
   switchStyle: {
-    marginHorizontal: HP(2),
+    marginHorizontal: HP(1),
   },
 });

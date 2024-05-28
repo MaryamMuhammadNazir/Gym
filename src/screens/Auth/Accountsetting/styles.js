@@ -35,8 +35,8 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   headerImage: {
-    height: 30,
-    width: 30,
+    height: 20,
+    width: 20,
     resizeMode: 'contain',
   },
   headerText: {

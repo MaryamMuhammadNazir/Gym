@@ -15,6 +15,8 @@ export default function BottomTabNavigator() {
     tabBarShowLabel: true,
     tabBarHideOnKeyboard: true,
     headerShown: false,
+    animationDuration: 3000,
+    animation: 'fade',
     tabBarStyle: {
       position: 'absolute',
       bottom: 0,

@@ -84,4 +84,31 @@ export const styles = StyleSheet.create({
     fontSize: HP(1.75),
     left: HP(2),
   },
+  modalContainer: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContent: {
+    width: '90%',
+    backgroundColor: Colors.black,
+    borderRadius: 10,
+    padding: 20,
+  },
+  video: {
+    width: '100%',
+    height: HP(30),
+  },
+  closeButton: {
+    marginTop: 20,
+    padding: 10,
+    backgroundColor: Colors.primary,
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  closeButtonText: {
+    color: Colors.white,
+    fontSize: 16,
+  },
 });

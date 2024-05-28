@@ -10,7 +10,11 @@ const Stack = createNativeStackNavigator();
 const HomeStack = () => {
   return (
     <Stack.Navigator
-      screenOptions={{headerShown: false, animation: 'fade_from_bottom'}}>
+      screenOptions={{
+        headerShown: false,
+        animationDuration: 6000,
+        animation: 'fade',
+      }}>
       <Stack.Screen name={Routes.HOME_SCREEN} component={HomeScreen} />
       <Stack.Screen name={Routes.EDITPROFLE} component={EditProfile} />
       <Stack.Screen name={Routes.ACCOUNTSETTING} component={Accountsetting} />

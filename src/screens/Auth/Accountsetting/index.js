@@ -1,5 +1,13 @@
-import {Image, TouchableOpacity, Text, View, TextInput} from 'react-native';
-import React, {useState} from 'react';
+import {
+  Image,
+  TouchableOpacity,
+  Text,
+  View,
+  TextInput,
+  KeyboardAvoidingView,
+  Animated,
+} from 'react-native';
+import React, {useState, useEffect} from 'react';
 import {styles} from './styles';
 import {Colors, Images} from '../../../assets';
 import {useNavigation} from '@react-navigation/native';
@@ -8,8 +16,30 @@ import {HP, WP} from '../../../utility/ResponsiveSize';
 const Accountsetting = () => {
   const navigation = useNavigation();
   const [text, setText] = useState('Name');
+  const [sname, setsname] = useState('John');
+  const [email, setemail] = useState('yanajohn@gmail.com');
+  const animation = useState(new Animated.Value(0))[0];
+  useEffect(() => {
+    Animated.timing(animation, {
+      toValue: 1,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start();
+  }, [animation]);
+
+  const animatedStyle = {
+    // opacity: animation,
+    transform: [
+      {
+        translateY: animation.interpolate({
+          inputRange: [0, 1],
+          outputRange: [50, 0], // Starts 50 units below and moves to its original position
+        }),
+      },
+    ],
+  };
   return (
-    <View style={styles.container}>
+    <Animated.View style={[styles.container, animatedStyle]}>
       <View style={styles.contentContainer}>
         {/* Profile header */}
         <View style={styles.header}>
@@ -30,119 +60,175 @@ const Accountsetting = () => {
           </View>
         </View>
         {/* middle view */}
-        <View style={styles.middleView}>
-          <View style={styles.dpView}>
-            <View>
-              <Image
-                source={Images.DP}
-                borderRadius={100}
+        <KeyboardAvoidingView>
+          <View style={styles.middleView}>
+            <View style={styles.dpView}>
+              <View>
+                <Image
+                  source={Images.DP}
+                  borderRadius={100}
+                  style={{
+                    height: 100,
+                    width: 100,
+                    resizeMode: 'cover',
+                    borderColor: Colors.white,
+                    borderWidth: HP(0.25),
+                  }}
+                />
+              </View>
+              <View
                 style={{
-                  height: 120,
-                  width: 120,
-                  resizeMode: 'cover',
-                  borderColor: Colors.white,
-                  borderWidth: HP(0.25),
+                  borderRadius: HP(0.75),
+                  backgroundColor: Colors.cardclr,
+                  height: 50,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <Text style={styles.chngeTxt}>Changes</Text>
+              </View>
+              <View
+                style={{
+                  borderRadius: HP(0.75),
+                  backgroundColor: Colors.cardclr,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  height: 50,
+                  width: 70,
+                }}>
+                <View
+                  style={{
+                    height: 20,
+                    width: 20,
+                    backgroundColor: 'red',
+                  }}></View>
+              </View>
+            </View>
+            <View
+              style={{
+                backgroundColor: Colors.cardclr,
+                flexDirection: 'row',
+                marginTop: HP(1),
+                alignItems: 'center',
+                paddingHorizontal: HP(1),
+              }}>
+              <TextInput
+                editable
+                maxLength={40}
+                onChangeText={text => setText(text)}
+                value={text}
+                placeholderTextColor={Colors.white}
+                style={{
+                  flex: 1,
+                  color: Colors.white,
+                  padding: 10,
+                  fontSize: 16,
                 }}
+              />
+
+              <Image
+                source={Images.CLOSE}
+                tintColor={Colors.white}
+                style={{height: 25, width: 25, resizeMode: 'cover'}}
               />
             </View>
             <View
               style={{
-                borderRadius: HP(0.75),
                 backgroundColor: Colors.cardclr,
-                height: 50,
-                justifyContent: 'center',
+                flexDirection: 'row',
+                marginTop: HP(1),
                 alignItems: 'center',
+                paddingHorizontal: HP(1),
               }}>
-              <Text style={styles.chngeTxt}>Changes</Text>
+              <TextInput
+                editable
+                maxLength={40}
+                onChangeText={text => setsname(text)}
+                value={sname}
+                placeholderTextColor={Colors.white}
+                style={{
+                  flex: 1,
+                  color: Colors.white,
+                  padding: 10,
+                  fontSize: 16,
+                }}
+              />
+
+              <Image
+                source={Images.CLOSE}
+                tintColor={Colors.white}
+                style={{height: 25, width: 25, resizeMode: 'cover'}}
+              />
             </View>
             <View
               style={{
-                borderRadius: HP(0.75),
                 backgroundColor: Colors.cardclr,
-                justifyContent: 'center',
+                flexDirection: 'row',
+                marginTop: HP(1),
                 alignItems: 'center',
-                height: 50,
-                width: 70,
+                paddingHorizontal: HP(1),
               }}>
+              <TextInput
+                editable
+                maxLength={40}
+                onChangeText={text => setemail(text)}
+                value={email}
+                placeholderTextColor={Colors.white}
+                style={{
+                  flex: 1,
+                  color: Colors.white,
+                  padding: 10,
+                  fontSize: 16,
+                }}
+              />
+
+              <Image
+                source={Images.CLOSE}
+                tintColor={Colors.white}
+                style={{height: 25, width: 25, resizeMode: 'cover'}}
+              />
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: HP(1.2),
+                backgroundColor: Colors.cardclr,
+                borderRadius: 20,
+                // justifyContent: 'center',
+              }}>
+              <View style={{height: 100, width: 100}}>
+                <Image
+                  source={Images.MAP}
+                  borderTopLeftRadius={20}
+                  borderBottomLeftRadius={20}
+                  style={{height: '100%', width: '100%', resizeMode: 'contain'}}
+                />
+              </View>
               <View
-                style={{height: 20, width: 20, backgroundColor: 'red'}}></View>
+                style={{
+                  left: HP(1),
+                  justifyContent: 'space-evenly',
+                  height: 100,
+                  alignItems: 'flex-start',
+                }}>
+                <Text style={{fontSize: 16, color: Colors.white}}>
+                  Payment Plan
+                </Text>
+                <Text style={{fontSize: 16, color: Colors.white}}>
+                  Standard plan
+                </Text>
+                <Text style={{fontSize: 16, color: Colors.primary}}>
+                  Tap to charge plan
+                </Text>
+              </View>
             </View>
           </View>
-          <View
-            style={{
-              backgroundColor: Colors.cardclr,
-              flexDirection: 'row',
-              marginTop: HP(1),
-              alignItems: 'center',
-              paddingHorizontal: HP(1),
-            }}>
-            <TextInput
-              editable
-              maxLength={40}
-              onChangeText={text => setText(text)}
-              value={text}
-              placeholderTextColor={Colors.white}
-              style={{flex: 1, color: Colors.white, padding: 10, fontSize: 16}}
-            />
-
-            <Image
-              source={Images.CLOSE}
-              tintColor={Colors.white}
-              style={{height: 25, width: 25, resizeMode: 'cover'}}
-            />
-          </View>
-          <View
-            style={{
-              backgroundColor: Colors.cardclr,
-              flexDirection: 'row',
-              marginTop: HP(1),
-              alignItems: 'center',
-              paddingHorizontal: HP(1),
-            }}>
-            <TextInput
-              editable
-              maxLength={40}
-              onChangeText={text => setText(text)}
-              value={text}
-              placeholderTextColor={Colors.white}
-              style={{flex: 1, color: Colors.white, padding: 10, fontSize: 16}}
-            />
-
-            <Image
-              source={Images.CLOSE}
-              tintColor={Colors.white}
-              style={{height: 25, width: 25, resizeMode: 'cover'}}
-            />
-          </View>
-          <View
-            style={{
-              backgroundColor: Colors.cardclr,
-              flexDirection: 'row',
-              marginTop: HP(1),
-              alignItems: 'center',
-              paddingHorizontal: HP(1),
-            }}>
-            <TextInput
-              editable
-              maxLength={40}
-              onChangeText={text => setText(text)}
-              value={text}
-              placeholderTextColor={Colors.white}
-              style={{flex: 1, color: Colors.white, padding: 10, fontSize: 16}}
-            />
-
-            <Image
-              source={Images.CLOSE}
-              tintColor={Colors.white}
-              style={{height: 25, width: 25, resizeMode: 'cover'}}
-            />
-          </View>
-        </View>
+        </KeyboardAvoidingView>
       </View>
       <View style={styles.bottomView}>
         <Text style={styles.deletetxt}>Delete your account</Text>
       </View>
-    </View>
+    </Animated.View>
   );
 };
 

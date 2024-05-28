@@ -4,58 +4,107 @@ import {
   View,
   Image,
   TouchableOpacity,
-  Text, Button
+  Text,
+  Button,
+  FlatList,
 } from 'react-native';
-import { Sound } from "react-native-sound";
-import React, { useState } from 'react';
+import {Sound} from 'react-native-sound';
+import React, {useState, useEffect} from 'react';
 import CustomizeHeader from '../../../components/CustomizeHeader';
-import { Colors, Images, data } from '../../../assets';
-import { WP, HP } from '../../../utility/ResponsiveSize';
+import {Colors, Images, data} from '../../../assets';
+import {WP, HP} from '../../../utility/ResponsiveSize';
 import CustomHeading from '../../../components/CustomHeading';
+import dings from '../../../assets/audios/audio11.mp3';
+import LottieView from 'lottie-react-native';
+import Animations from '../../../assets/animations/Animations';
 
 const SoundCustom = () => {
+  const [playing, setPlaying] = useState(false);
+  const [selected, setSelected] = useState(dings);
+
+  var Sound = require('react-native-sound');
+  Sound.setCategory('Playback');
+  var audio = new Sound(selected, null, error => {
+    if (error) {
+      console.log('failed to load the sound', error);
+      return;
+    }
+  });
 
   const files = [
-    {
-      id: 1,
-      file: require('../../../assets/audios/audio11.mp3'),
-    },
-    {
-      id: 2,
-      file: require('../../../assets/audios/audio.mp3'),
-    },
-    {
-      id: 3,
-      file: require('../../../assets/audios/audio.mp3'),
-    },
+    {id: '1', file: dings, time: '3:00'},
+    {id: '2', file: dings, time: '2:30'},
+    {id: '3', file: dings, time: '1:70'},
+    {id: '4', file: dings, time: '4:00'},
+    {id: '5', file: dings, time: '3:00'},
+    {id: '6', file: dings, time: '5:00'},
+    {id: '7', file: dings, time: '9:08'},
+    {id: '8', file: dings, time: '1:00'},
+    {id: '9', file: dings, time: '2:00'},
   ];
-  const [selectedFile, setSelectedFile] = useState(files[0]);
 
-  const [selectedItem, setSelectedText] = useState('Imported music');
-  const playAudio = () => {
-    var whoosh = new Sound('../../../assets/audios/audio11.mp3', Sound.MAIN_BUNDLE, error => {
-      if (error) {
-        console.log('failed to load the sound', error);
-        return;
-      }
-      // loaded successfully
-      console.log(
-        'duration in seconds: ' +
-        whoosh.getDuration() +
-        'number of channels: ' +
-        whoosh.getNumberOfChannels(),
-      );
+  useEffect(() => {
+    audio.setVolume(1);
+    return () => {
+      audio.release();
+    };
+  }, []);
 
-      // Play the sound with an onEnd callback
-      whoosh.play(success => {
+  const playPause = () => {
+    if (audio.isPlaying()) {
+      audio.pause();
+      setPlaying(false);
+    } else {
+      audio.play(success => {
         if (success) {
+          setPlaying(false);
           console.log('successfully finished playing');
         } else {
+          setPlaying(false);
           console.log('playback failed due to audio decoding errors');
         }
       });
-    });
+      setPlaying(true);
+    }
   };
+
+  const [selectedItem, setSelectedText] = useState('Imported music');
+
+  const renderItem = ({item}) => (
+    <TouchableOpacity
+      style={{
+        width: '100%',
+        backgroundColor: Colors.cardclr,
+        borderBottomWidth: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderColor: Colors.white,
+        justifyContent: 'space-between',
+      }}
+      onPress={() => setSelected(item.file)}>
+      <View style={{flexDirection: 'row'}}>
+        <Text style={{color: Colors.white, fontSize: 15, padding: 18}}>
+          {item.time}
+        </Text>
+        <Text style={{color: Colors.white, fontSize: 15, padding: 18}}>
+          {item.file}
+        </Text>
+      </View>
+      <View>
+        <Image
+          source={Images.PLAYFILLED}
+          tintColor={Colors.white}
+          style={{
+            height: 25,
+            width: 25,
+            resizeMode: 'cover',
+            marginHorizontal: 15,
+          }}
+        />
+      </View>
+    </TouchableOpacity>
+  );
+
   return (
     <View style={styles.container}>
       <CustomizeHeader isVisible={true} />
@@ -65,7 +114,6 @@ const SoundCustom = () => {
           subText="Keep it fun with sounds of your device"
         />
       </View>
-      {/* btn view */}
       <View style={styles.btnView}>
         {data?.music?.map((item, index) => (
           <TouchableOpacity
@@ -83,11 +131,74 @@ const SoundCustom = () => {
       </View>
       {selectedItem === 'Imported music' ? (
         <View style={styles.importedMusic}>
-          <Button
-            title="play"
-            onPress={() => {
-              playAudio();
-            }} />
+          <View>
+            <Text
+              style={{
+                color: Colors.white,
+                padding: 10,
+                fontSize: 20,
+                fontWeight: 'bold',
+              }}>
+              Now Playing
+            </Text>
+          </View>
+          <View
+            style={{
+              backgroundColor: Colors.cardclr,
+              width: '95%',
+              height: 70,
+              borderRadius: 20,
+              alignSelf: 'center',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}>
+            <View
+              style={{
+                borderRightWidth: 1,
+                width: 70,
+                height: '90%',
+                justifyContent: 'center',
+                alignItems: 'center',
+                borderColor: Colors.tabbgclr,
+              }}>
+              <LottieView
+                source={Animations.MUSIC}
+                autoPlay={playing}
+                resizeMode="cover"
+                style={styles.lottieView}
+              />
+            </View>
+            <TouchableOpacity onPress={() => setPlaying(!playing)}>
+              <Image
+                source={playing == false ? Images.BELL : Images.PLAYFILLED}
+                style={{
+                  resizeMode: 'cover',
+                  height: 30,
+                  width: 30,
+                  marginHorizontal: 10,
+                }}
+                tintColor={Colors.white}
+              />
+            </TouchableOpacity>
+          </View>
+          <View>
+            <Text
+              style={{
+                color: Colors.white,
+                padding: 10,
+                fontSize: 20,
+                fontWeight: 'bold',
+              }}>
+              Your Queue
+            </Text>
+          </View>
+          <FlatList
+            data={files}
+            renderItem={renderItem}
+            keyExtractor={item => item.id}
+          />
+          <Button title={playing ? 'Pause' : 'Play'} onPress={playPause} />
         </View>
       ) : (
         <View style={styles.connectAppsContainer}>
@@ -125,6 +236,11 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.tabbgclr,
     flex: 1,
   },
+  lottieView: {
+    width: WP(8), // Adjust the width to 50% of the screen width
+    height: HP(7), // Adjust the height to 30% of the screen height
+    resizeMode: 'cover',
+  },
   contentContainerStyle: {
     paddingHorizontal: WP(5),
     paddingBottom: HP(3),
@@ -148,7 +264,6 @@ const styles = StyleSheet.create({
   },
   importedMusic: {
     flex: 1,
-    backgroundColor: 'red',
   },
   connectAppsContainer: {
     flex: 1,
@@ -181,7 +296,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  ytMusicTxt: { color: Colors.white, fontSize: HP(1.5), marginTop: HP(1) },
+  ytMusicTxt: {color: Colors.white, fontSize: HP(1.5), marginTop: HP(1)},
   playButtonImage: {
     height: 40,
     width: 40,
@@ -201,7 +316,6 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     alignItems: 'center',
     justifyContent: 'center',
-    borderStyle: 'dashed',
     borderStyle: 'dashed',
   },
 });

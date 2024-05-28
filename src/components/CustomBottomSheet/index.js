@@ -6,12 +6,14 @@ import {
   Image,
   StyleSheet,
   Dimensions,
+  ImageBackground,
 } from 'react-native';
 import BottomSheet from '@gorhom/bottom-sheet';
 import {HP, WP} from '../../utility/ResponsiveSize';
 import {Colors, Images} from '../../assets';
 import * as Progress from 'react-native-progress';
 import Carousel from 'react-native-reanimated-carousel'; // Import the Carousel component
+import SBItem from './SBtext';
 
 const CustomBottomSheet = forwardRef(
   (
@@ -25,30 +27,41 @@ const CustomBottomSheet = forwardRef(
       {
         id: 0,
         url: 'https://picsum.photos/id/1/200/300',
+        time: '9:24:00',
+        text: 'Warm up',
+        subTxt: '10 miutes',
       },
       {
         id: 0,
         url: 'https://picsum.photos/id/2/200/300',
+        time: '9:24:00',
+        text: 'Warm up',
+        subTxt: '10 miutes',
       },
       {
         id: 0,
         url: 'https://picsum.photos/id/3/200/300',
+        time: '6:24:00',
+        text: 'Jump squats',
+        subTxt: '3 sets , 4 reps each',
       },
       {
         id: 0,
         url: 'https://picsum.photos/id/4/200/300',
+        time: '1:24:00',
+        text: 'Warm up',
+        subTxt: '3 sets , 4 reps each',
       },
       {
         id: 0,
         url: 'https://picsum.photos/id/5/200/300',
+        time: '4:24:00',
+        text: 'Warm up',
+        subTxt: '10 miutes',
       },
     ]);
-    const imagesURL = [
-      {id: 1, url: require('../../assets/images/img.png')},
-      {id: 1, url: require('../../assets/images/img.png')},
-      {id: 1, url: require('../../assets/images/img.png')},
-      // Add more objects for additional images if needed
-    ];
+    const [snapDirection, setSnapDirection] = useState('left');
+    const [mode, setMode] = useState('horizontal-stack');
 
     return (
       <BottomSheet ref={ref} snapPoints={snapPoints}>
@@ -75,6 +88,7 @@ const CustomBottomSheet = forwardRef(
                 <Text>7 exercises, 3 sets, 8 reps</Text>
               </View>
               {/* Use here the progress bar */}
+              <View></View>
               <Progress.Bar
                 progress={progress}
                 width={300}
@@ -87,28 +101,103 @@ const CustomBottomSheet = forwardRef(
               <View style={{flex: 1}}>
                 {/* Use the Carousel component here */}
                 <Carousel
+                  width={300}
                   loop
-                  width={width}
-                  height={width / 2}
-                  autoPlay={true}
+                  height={400}
+                  autoPlay={false}
+                  borderRadius={20}
+                  style={{}}
+                  pagingEnabled={true}
+                  snapEnabled={true}
+                  mode={'vertical-stack'}
+                  modeConfig={{
+                    snapDirection,
+                  }}
                   scrollAnimationDuration={1000}
-                  onSnapToItem={index => console.log('current index:', index)}
+                  onSnapToItem={index =>
+                    console.log('current index:---', index)
+                  }
                   data={images}
                   renderItem={({item}) => (
                     <View
                       style={{
                         flex: 1,
-                        borderWidth: 1,
                         justifyContent: 'center',
                       }}>
-                      <Image
+                      <ImageBackground
                         source={{uri: item.url}}
+                        borderRadius={20}
                         style={{
-                          width: 200,
-                          height: 200,
-                          resizeMode: 'contain',
-                        }}
-                      />
+                          width: 300,
+                          height: 300,
+                          resizeMode: 'cover',
+                          borderRadius: 20,
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}>
+                        <ImageBackground
+                          source={Images.CIRCLE}
+                          style={{
+                            height: 70,
+                            width: 70,
+                            resizeMode: 'cover',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                          }}
+                          tintColor={Colors.primary}>
+                          <Image
+                            source={Images.PLAYFILLED}
+                            tintColor={Colors.white}
+                            style={{height: 40, width: 40, resizeMode: 'cover'}}
+                          />
+                        </ImageBackground>
+                        <View
+                          style={{
+                            width: '90%',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            flexDirection: 'row',
+                            position: 'absolute',
+                            bottom: 10,
+                          }}>
+                          <View>
+                            <Text
+                              style={{
+                                fontSize: 16,
+                                color: Colors.white,
+                                paddingHorizontal: 15,
+                                paddingVertical: 2,
+                              }}>
+                              {item?.text}
+                            </Text>
+
+                            <Text
+                              style={{
+                                fontSize: 16,
+                                color: Colors.white,
+                                paddingHorizontal: 15,
+                                paddingVertical: 2,
+                              }}>
+                              {item?.subTxt}
+                            </Text>
+                          </View>
+                          <View
+                            style={{
+                              backgroundColor: 'rgb(248,248,248)',
+                              borderRadius: 15,
+                            }}>
+                            <Text
+                              style={{
+                                fontSize: 16,
+                                color: Colors.tabbgclr,
+                                paddingHorizontal: 15,
+                                paddingVertical: 5,
+                              }}>
+                              {item.time}
+                            </Text>
+                          </View>
+                        </View>
+                      </ImageBackground>
                     </View>
                   )}
                 />
