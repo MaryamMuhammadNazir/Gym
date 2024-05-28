@@ -4,17 +4,58 @@ import {
   View,
   Image,
   TouchableOpacity,
-  Text,
+  Text, Button
 } from 'react-native';
-
-import React, {useState} from 'react';
+import { Sound } from "react-native-sound";
+import React, { useState } from 'react';
 import CustomizeHeader from '../../../components/CustomizeHeader';
-import {Colors, Images, data} from '../../../assets';
-import {WP, HP} from '../../../utility/ResponsiveSize';
+import { Colors, Images, data } from '../../../assets';
+import { WP, HP } from '../../../utility/ResponsiveSize';
 import CustomHeading from '../../../components/CustomHeading';
 
 const SoundCustom = () => {
+
+  const files = [
+    {
+      id: 1,
+      file: require('../../../assets/audios/audio11.mp3'),
+    },
+    {
+      id: 2,
+      file: require('../../../assets/audios/audio.mp3'),
+    },
+    {
+      id: 3,
+      file: require('../../../assets/audios/audio.mp3'),
+    },
+  ];
+  const [selectedFile, setSelectedFile] = useState(files[0]);
+
   const [selectedItem, setSelectedText] = useState('Imported music');
+  const playAudio = () => {
+    var whoosh = new Sound('../../../assets/audios/audio11.mp3', Sound.MAIN_BUNDLE, error => {
+      if (error) {
+        console.log('failed to load the sound', error);
+        return;
+      }
+      // loaded successfully
+      console.log(
+        'duration in seconds: ' +
+        whoosh.getDuration() +
+        'number of channels: ' +
+        whoosh.getNumberOfChannels(),
+      );
+
+      // Play the sound with an onEnd callback
+      whoosh.play(success => {
+        if (success) {
+          console.log('successfully finished playing');
+        } else {
+          console.log('playback failed due to audio decoding errors');
+        }
+      });
+    });
+  };
   return (
     <View style={styles.container}>
       <CustomizeHeader isVisible={true} />
@@ -41,7 +82,13 @@ const SoundCustom = () => {
         ))}
       </View>
       {selectedItem === 'Imported music' ? (
-        <View style={styles.importedMusic}></View>
+        <View style={styles.importedMusic}>
+          <Button
+            title="play"
+            onPress={() => {
+              playAudio();
+            }} />
+        </View>
       ) : (
         <View style={styles.connectAppsContainer}>
           <Text style={styles.connectAppsText}>Connect your apps</Text>
@@ -134,7 +181,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  ytMusicTxt: {color: Colors.white, fontSize: HP(1.5), marginTop: HP(1)},
+  ytMusicTxt: { color: Colors.white, fontSize: HP(1.5), marginTop: HP(1) },
   playButtonImage: {
     height: 40,
     width: 40,
