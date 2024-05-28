@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from 'react';
+import React, {forwardRef, useState} from 'react';
 import {
   View,
   Text,
@@ -7,15 +7,15 @@ import {
   StyleSheet,
   Dimensions,
 } from 'react-native';
-import BottomSheet, { BottomSheetModal } from '@gorhom/bottom-sheet';
-import { HP, WP } from '../../utility/ResponsiveSize';
-import { Colors, Images } from '../../assets';
+import BottomSheet from '@gorhom/bottom-sheet';
+import {HP, WP} from '../../utility/ResponsiveSize';
+import {Colors, Images} from '../../assets';
 import * as Progress from 'react-native-progress';
 import Carousel from 'react-native-reanimated-carousel'; // Import the Carousel component
 
 const CustomBottomSheet = forwardRef(
   (
-    { snapPoints, handlePressEndSession, isImageSlideOpen, setImageSliderOpen },
+    {snapPoints, handlePressEndSession, isImageSlideOpen, setImageSliderOpen},
     ref,
   ) => {
     const [progress, setProgress] = useState(0.3);
@@ -44,9 +44,9 @@ const CustomBottomSheet = forwardRef(
       },
     ]);
     const imagesURL = [
-      { id: 1, url: require('../../assets/images/img.png') },
-      { id: 1, url: require('../../assets/images/img.png') },
-      { id: 1, url: require('../../assets/images/img.png') },
+      {id: 1, url: require('../../assets/images/img.png')},
+      {id: 1, url: require('../../assets/images/img.png')},
+      {id: 1, url: require('../../assets/images/img.png')},
       // Add more objects for additional images if needed
     ];
 
@@ -61,7 +61,7 @@ const CustomBottomSheet = forwardRef(
           }}>
           {isImageSlideOpen === true ? (
             <>
-              <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+              <View style={{justifyContent: 'center', alignItems: 'center'}}>
                 <Text
                   style={{
                     marginVertical: HP(2),
@@ -84,7 +84,7 @@ const CustomBottomSheet = forwardRef(
                 height={15}
                 borderRadius={20}
               />
-              <View style={{ flex: 1 }}>
+              <View style={{flex: 1}}>
                 {/* Use the Carousel component here */}
                 <Carousel
                   loop
@@ -94,7 +94,7 @@ const CustomBottomSheet = forwardRef(
                   scrollAnimationDuration={1000}
                   onSnapToItem={index => console.log('current index:', index)}
                   data={images}
-                  renderItem={({ item }) => (
+                  renderItem={({item}) => (
                     <View
                       style={{
                         flex: 1,
@@ -102,7 +102,7 @@ const CustomBottomSheet = forwardRef(
                         justifyContent: 'center',
                       }}>
                       <Image
-                        source={{ uri: item.url }}
+                        source={{uri: item.url}}
                         style={{
                           width: 200,
                           height: 200,
@@ -117,7 +117,7 @@ const CustomBottomSheet = forwardRef(
             </>
           ) : (
             <>
-              <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+              <View style={{justifyContent: 'center', alignItems: 'center'}}>
                 <Text
                   style={{
                     marginVertical: HP(3),
@@ -128,7 +128,7 @@ const CustomBottomSheet = forwardRef(
                   }}>
                   You're on a roll!
                 </Text>
-                <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                <View style={{alignItems: 'center', justifyContent: 'center'}}>
                   <Text
                     style={{
                       width: '70%',
@@ -146,7 +146,7 @@ const CustomBottomSheet = forwardRef(
               <View>
                 <Image
                   source={Images.YOGAGIRL}
-                  style={{ height: 200, width: 200, resizeMode: 'contain' }}
+                  style={{height: 200, width: 200, resizeMode: 'contain'}}
                 />
               </View>
               <TouchableOpacity
