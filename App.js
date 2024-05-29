@@ -17,17 +17,17 @@ export const navigationRef = createNavigationContainerRef();
 const App = () => {
   return (
     <Provider store={store}>
-      <PersistGate persistor={persister}>
-        <NavigationContainer ref={navigationRef}>
-          <BottomSheetModalProvider>
+      <BottomSheetModalProvider>
+        <PersistGate persistor={persister}>
+          <NavigationContainer ref={navigationRef}>
             <GestureHandlerRootView style={{flex: 1}}>
               <SafeAreaProvider>
                 <RootStack />
               </SafeAreaProvider>
             </GestureHandlerRootView>
-          </BottomSheetModalProvider>
-        </NavigationContainer>
-      </PersistGate>
+          </NavigationContainer>
+        </PersistGate>
+      </BottomSheetModalProvider>
     </Provider>
   );
 };

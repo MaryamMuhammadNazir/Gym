@@ -6,16 +6,20 @@ import CustomizeHeader from '../../../components/CustomizeHeader';
 import GraphBar from '../../../components/GraphBar';
 import CustomHeading from '../../../components/CustomHeading';
 import {Colors, Images} from '../../../assets';
-import {WP, HP} from '../../../utility/ResponsiveSize'; // Import WP and HP
-import Moment from 'moment'; // Import Moment
+import {WP, HP} from '../../../utility/ResponsiveSize';
+import Moment from 'moment';
 import styles from './styles';
 import Button from '../../../components/CustomButton';
 import CustomBottomSheet from '../../../components/CustomBottomSheet';
+
 import {useNavigation} from '@react-navigation/native';
+import CaloriesTracker from './CaloriesTracker';
 const HomeScreen = () => {
   const dispatch = useDispatch();
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
   const [isImageSlideOpen, setImageSliderOpen] = useState(true);
+  const [fill, setFill] = useState(10);
+
   useEffect(() => {
     setImageSliderOpen(true);
     console.log('=================>');
@@ -45,7 +49,7 @@ const HomeScreen = () => {
       } else {
         bottomsheetRef.current.close();
         setIsBottomSheetOpen(false);
-        navigation.setOptions({tabBarVisible: true});
+        navigation.setOptions({tabBarVisible: false});
         console.log('close Bottom');
       }
     }
@@ -99,16 +103,16 @@ const HomeScreen = () => {
             </View>
           </View>
           <View style={styles.barConatianer}>
-            <GraphBar value={75} day="Mon" />
-            <GraphBar value={50} day="Tue" />
-            <GraphBar value={25} day="Wed" />
-            <GraphBar value={50} day="Thu" />
-            <GraphBar value={30} day="Fri" />
-            <GraphBar value={20} day="Sat" />
-            <GraphBar value={10} day="Sun" />
+            <GraphBar value={50} day="Mon" colorrr={Colors.white} />
+            <GraphBar value={65} day="Tue" colorrr={Colors.white} />
+            <GraphBar value={95} day="Wed" colorrr={Colors.white} />
+            <GraphBar value={99} day="Thu" colorrr={Colors.white} />
+            <GraphBar value={45} day="Fri" colorrr={Colors.white} />
+            <GraphBar value={65} day="Sat" colorrr={Colors.white} />
+            <GraphBar value={0} day="Sun" colorrr={Colors.primary} />
           </View>
         </View>
-        <View style={{marginVertical: HP(3)}}>
+        <View style={{marginVertical: HP(2)}}>
           <Text style={styles.routineText}>Today's routine</Text>
           <View style={styles.exerciseContainer}>
             <Text style={styles.exerciseText}>7 exercises, 3 sets, 8 reps</Text>
@@ -125,6 +129,9 @@ const HomeScreen = () => {
             setImageSliderOpen={setImageSliderOpen}
           />
         )}
+        <View style={{marginVertical: HP(1)}}>
+          <CaloriesTracker />
+        </View>
       </ScrollView>
     </View>
   );

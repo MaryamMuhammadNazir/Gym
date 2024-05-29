@@ -11,9 +11,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: WP(3),
     borderRadius: WP(5),
   },
+
   contentContainerStyle: {
     paddingHorizontal: WP(5),
-    paddingBottom: HP(3),
+    paddingBottom: HP(5),
     flex: 1,
   },
   dateText: {
@@ -59,6 +60,7 @@ const styles = StyleSheet.create({
   routineText: {
     color: Colors.white,
     fontSize: HP(2.5),
+    marginBottom: HP(1),
   },
   exerciseContainer: {
     flexDirection: 'row',

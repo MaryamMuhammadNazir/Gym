@@ -23,6 +23,7 @@ const Images = {
   CIRCLE: require('./cirle.png'),
   EMPTY: require('./empty.png'),
   MUSIC: require('./musicIcon.jpeg'),
+  NEEDLE: require('./needle.png'),
 };
 
 export default Images;

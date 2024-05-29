@@ -32,8 +32,8 @@ const Accountsetting = () => {
     transform: [
       {
         translateY: animation.interpolate({
-          inputRange: [0, 1],
-          outputRange: [50, 0], // Starts 50 units below and moves to its original position
+          inputRange: [0.5, 1],
+          outputRange: [20, 0], // Starts 50 units below and moves to its original position
         }),
       },
     ],
