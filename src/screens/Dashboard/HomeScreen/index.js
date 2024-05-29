@@ -118,21 +118,20 @@ const HomeScreen = () => {
             <Text style={styles.exerciseText}>7 exercises, 3 sets, 8 reps</Text>
             <Button buttonTitle={"Let's go"} onPress={onPressBtn} />
           </View>
-        </View>
-
-        {isBottomSheetOpen && (
-          <CustomBottomSheet
-            ref={bottomsheetRef}
-            snapPoints={snapPoints}
-            handlePressEndSession={handlePressEndSession}
-            isImageSlideOpen={isImageSlideOpen}
-            setImageSliderOpen={setImageSliderOpen}
-          />
-        )}
-        <View style={{marginVertical: HP(1)}}>
-          <CaloriesTracker />
+          <View style={{marginVertical: HP(2)}}>
+            <CaloriesTracker />
+          </View>
         </View>
       </ScrollView>
+      {isBottomSheetOpen && (
+        <CustomBottomSheet
+          ref={bottomsheetRef}
+          snapPoints={snapPoints}
+          handlePressEndSession={handlePressEndSession}
+          isImageSlideOpen={isImageSlideOpen}
+          setImageSliderOpen={setImageSliderOpen}
+        />
+      )}
     </View>
   );
 };

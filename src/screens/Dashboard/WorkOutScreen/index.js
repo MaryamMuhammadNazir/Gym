@@ -10,7 +10,7 @@ import {
   Modal,
 } from 'react-native';
 import CustomizeHeader from '../../../components/CustomizeHeader';
-import {Colors, Images, data} from '../../../assets';
+import {Colors, Images, Videos, data} from '../../../assets';
 import {WP, HP} from '../../../utility/ResponsiveSize';
 import CustomHeading from '../../../components/CustomHeading';
 import Video from 'react-native-video';
@@ -72,7 +72,7 @@ const Workout = () => {
           <Text style={styles.sectionTitle}>Continue Watching</Text>
 
           <TouchableOpacity
-            onPress={() => handleThumbnailPress(Videos.SQUATS_AND_PLUNGUM)} // Replace with actual video source
+            onPress={() => handleThumbnailPress(Videos.YOGA1)} // Replace with actual video source
             style={styles.card1}>
             <ImageBackground
               borderRadius={HP(3)}
@@ -95,7 +95,7 @@ const Workout = () => {
           <Text style={styles.sectionTitle}>Recommendation</Text>
           <View style={styles.recommendationContainer}>
             <TouchableOpacity
-              onPress={() => handleThumbnailPress(Videos.SQUATS)} // Replace with actual video source
+              onPress={() => handleThumbnailPress(Videos.YOGA1)} // Replace with actual video source
               style={styles.card}>
               <ImageBackground
                 borderRadius={HP(3)}
@@ -114,7 +114,7 @@ const Workout = () => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => handleThumbnailPress(Videos.PLUNGUM)} // Replace with actual video source
+              onPress={() => handleThumbnailPress(Videos.YOGA1)} // Replace with actual video source
               style={styles.card}>
               <ImageBackground
                 borderRadius={HP(3)}
@@ -143,7 +143,7 @@ const Workout = () => {
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <Video
-              source={videoSource}
+              source={Videos.YOGA1}
               style={styles.video}
               controls={true}
               resizeMode="contain"
@@ -151,7 +151,10 @@ const Workout = () => {
             <TouchableOpacity
               style={styles.closeButton}
               onPress={() => setModalVisible(false)}>
-              <Text style={styles.closeButtonText}>Close</Text>
+              <Image
+                source={Images.CLOSE}
+                style={{height: 50, width: 50, resizeMode: 'cover'}}
+              />
             </TouchableOpacity>
           </View>
         </View>

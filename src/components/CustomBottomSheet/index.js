@@ -13,7 +13,6 @@ import {HP, WP} from '../../utility/ResponsiveSize';
 import {Colors, Images} from '../../assets';
 import * as Progress from 'react-native-progress';
 import Carousel from 'react-native-reanimated-carousel'; // Import the Carousel component
-import SBItem from './SBtext';
 
 const CustomBottomSheet = forwardRef(
   (
@@ -63,6 +62,16 @@ const CustomBottomSheet = forwardRef(
     const [snapDirection, setSnapDirection] = useState('left');
     const [mode, setMode] = useState('horizontal-stack');
 
+    // Handler to set the progress value based on the image slide state
+    const handleProgress = () => {
+      if (isImageSlideOpen) {
+        // Set progress to 1 when the image slide is open
+        setProgress(progress + 0.1);
+      } else {
+        // Set progress to default value (0.3) when the image slide is closed
+        setProgress(0.3);
+      }
+    };
     return (
       <BottomSheet ref={ref} snapPoints={snapPoints}>
         <View
@@ -88,16 +97,19 @@ const CustomBottomSheet = forwardRef(
                 <Text>7 exercises, 3 sets, 8 reps</Text>
               </View>
               {/* Use here the progress bar */}
-              <View></View>
-              <Progress.Bar
-                progress={progress}
-                width={300}
-                unfilledColor={Colors.tabbgclr}
-                borderWidth={0}
-                color={Colors.primary}
-                height={15}
-                borderRadius={20}
-              />
+              <View style={{marginTop: HP(3)}}>
+                <Progress.Bar
+                  progress={progress}
+                  width={300}
+                  unfilledColor={Colors.tabbgclr}
+                  borderWidth={0}
+                  color={Colors.primary}
+                  height={15}
+                  borderRadius={20}
+                  fillBorderRadius={10}
+                  useNativeDriver={true}
+                />
+              </View>
               <View style={{flex: 1}}>
                 {/* Use the Carousel component here */}
                 <Carousel
@@ -114,9 +126,12 @@ const CustomBottomSheet = forwardRef(
                     snapDirection,
                   }}
                   scrollAnimationDuration={1000}
-                  onSnapToItem={index =>
-                    console.log('current index:---', index)
-                  }
+                  onSnapToItem={index => {
+                    // setCurrentIndex(index); // Update the current index state
+                    // Update the progress based on the current index
+                    const newProgress = (index + 1) / images.length; // Calculate the new progress
+                    setProgress(newProgress); // Update the progress state
+                  }}
                   data={images}
                   renderItem={({item}) => (
                     <View

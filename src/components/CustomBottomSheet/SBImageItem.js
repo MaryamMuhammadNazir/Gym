@@ -22,7 +22,7 @@ const SBImageItem = ({style, index, showIndex = true, img}) => {
         <ImageBackground
           source={Images.CIRCLE}
           tintColor={Colors.primary}
-          style={{height: 20, width: 20, zIndex: 999}}
+          style={{height: 20, width: 20}}
         />
       </ImageBackground>
       {showIndex && (

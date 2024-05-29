@@ -107,7 +107,6 @@ const styles = StyleSheet.create({
     width: 30,
     height: 200,
     resizeMode: 'cover',
-    zIndex: 2000,
   },
   fillText: {
     fontSize: 18,

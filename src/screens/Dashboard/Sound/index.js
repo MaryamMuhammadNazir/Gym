@@ -9,19 +9,19 @@ import {
   FlatList,
 } from 'react-native';
 // import { Sound } from 'react-native-sound';
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import CustomizeHeader from '../../../components/CustomizeHeader';
-import { Colors, Images, data } from '../../../assets';
-import { WP, HP } from '../../../utility/ResponsiveSize';
+import {Colors, Images, data} from '../../../assets';
+import {WP, HP} from '../../../utility/ResponsiveSize';
 import CustomHeading from '../../../components/CustomHeading';
 import dings from '../../../assets/audios/audio11.mp3';
 import LottieView from 'lottie-react-native';
 import Animations from '../../../assets/animations/Animations';
+import {styles} from './styles';
 let Sound = require('react-native-sound');
 const SoundCustom = () => {
   const [playing, setPlaying] = useState(false);
   const [selected, setSelected] = useState(dings);
-
 
   Sound.setCategory('Playback');
   var audio = new Sound(selected, null, error => {
@@ -32,15 +32,15 @@ const SoundCustom = () => {
   });
 
   const files = [
-    { id: '1', file: dings, time: '3:00' },
-    { id: '2', file: dings, time: '2:30' },
-    { id: '3', file: dings, time: '1:70' },
-    { id: '4', file: dings, time: '4:00' },
-    { id: '5', file: dings, time: '3:00' },
-    { id: '6', file: dings, time: '5:00' },
-    { id: '7', file: dings, time: '9:08' },
-    { id: '8', file: dings, time: '1:00' },
-    { id: '9', file: dings, time: '2:00' },
+    {id: '1', file: dings, time: '3:00'},
+    {id: '2', file: dings, time: '2:30'},
+    {id: '3', file: dings, time: '1:70'},
+    {id: '4', file: dings, time: '4:00'},
+    {id: '5', file: dings, time: '3:00'},
+    {id: '6', file: dings, time: '5:00'},
+    {id: '7', file: dings, time: '9:08'},
+    {id: '8', file: dings, time: '1:00'},
+    {id: '9', file: dings, time: '2:00'},
   ];
 
   useEffect(() => {
@@ -70,7 +70,7 @@ const SoundCustom = () => {
 
   const [selectedItem, setSelectedText] = useState('Imported music');
 
-  const renderItem = ({ item }) => (
+  const renderItem = ({item}) => (
     <TouchableOpacity
       style={{
         width: '100%',
@@ -81,12 +81,16 @@ const SoundCustom = () => {
         borderColor: Colors.white,
         justifyContent: 'space-between',
       }}
-      onPress={() => setSelected(item.file)}>
-      <View style={{ flexDirection: 'row' }}>
-        <Text style={{ color: Colors.white, fontSize: 15, padding: 18 }}>
+      // onPress={() => setSelected(item.file)}>
+      onPress={() => {
+        setSelected(item.file);
+        setPlaying(true);
+      }}>
+      <View style={{flexDirection: 'row'}}>
+        <Text style={{color: Colors.white, fontSize: 15, padding: 18}}>
           {item.time}
         </Text>
-        <Text style={{ color: Colors.white, fontSize: 15, padding: 18 }}>
+        <Text style={{color: Colors.white, fontSize: 15, padding: 18}}>
           {item.file}
         </Text>
       </View>
@@ -169,6 +173,17 @@ const SoundCustom = () => {
                 style={styles.lottieView}
               />
             </View>
+            <View>
+              <Text
+                style={{
+                  color: Colors.white,
+                  alignItems: 'flex-start',
+                  alignSelf: 'flex-start',
+                  justifyContent: 'flex-start',
+                }}>
+                {selected}
+              </Text>
+            </View>
             <TouchableOpacity onPress={() => setPlaying(!playing)}>
               <Image
                 source={playing == false ? Images.BELL : Images.PLAYFILLED}
@@ -192,8 +207,7 @@ const SoundCustom = () => {
               }}>
               Your Queue
             </Text>
-            <Button title={playing ? 'Pause' : 'Play'} onPress={playPause} />
-
+            {/* <Button title={playing ? 'Pause' : 'Play'} onPress={playPause} /> */}
           </View>
           <FlatList
             data={files}
@@ -230,95 +244,3 @@ const SoundCustom = () => {
 };
 
 export default SoundCustom;
-
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: Platform.OS === 'ios' ? HP(5) : 0,
-    backgroundColor: Colors.tabbgclr,
-    flex: 1,
-  },
-  lottieView: {
-    width: WP(8), // Adjust the width to 50% of the screen width
-    height: HP(7), // Adjust the height to 30% of the screen height
-    resizeMode: 'cover',
-  },
-  contentContainerStyle: {
-    paddingHorizontal: WP(5),
-    paddingBottom: HP(3),
-  },
-  btnView: {
-    width: '60%',
-    flexDirection: 'row',
-    borderRadius: HP(1),
-    backgroundColor: Colors.cardclr, overflow: "hidden"
-    , flexWrap: 'wrap',
-    justifyContent: 'center',
-    alignContent: 'center',
-    marginLeft: HP(2),
-  },
-  item: {
-    padding: HP(1), paddingLeft: 0
-  },
-  itemText: {
-    color: Colors.white,
-    padding: WP(0.25),
-  },
-  importedMusic: {
-    flex: 1,
-
-
-  },
-  connectAppsContainer: {
-    flex: 1,
-    marginHorizontal: HP(2),
-    marginVertical: WP(10),
-  },
-  connectAppsText: {
-    color: 'white',
-    fontSize: HP(3),
-  },
-  connectAppsInnerContainer: {
-    flexDirection: 'row',
-    flex: 1,
-    marginVertical: WP(5),
-  },
-  musicCard: {
-    height: 130,
-    width: 130,
-    borderRadius: HP(3),
-    backgroundColor: Colors.cardclr,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginHorizontal: HP(0.5),
-  },
-  playButton: {
-    height: 70,
-    width: 70,
-    borderRadius: 40,
-    backgroundColor: 'red',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  ytMusicTxt: { color: Colors.white, fontSize: HP(1.5), marginTop: HP(1) },
-  playButtonImage: {
-    height: 40,
-    width: 40,
-    resizeMode: 'contain',
-  },
-  plusImage: {
-    height: 20,
-    width: 20,
-    resizeMode: 'contain',
-  },
-  dashedBorderCard: {
-    height: 130,
-    width: 130,
-    borderRadius: HP(3),
-    marginHorizontal: HP(0.5),
-    borderColor: Colors.white,
-    borderWidth: 1.5,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderStyle: 'dashed',
-  },
-});

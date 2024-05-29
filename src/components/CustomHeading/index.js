@@ -20,9 +20,10 @@ const styles = StyleSheet.create({
   },
   mainHeading: {
     fontSize: WP(8), // Adjust the font size as needed
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     marginBottom: HP(0), // Adjust the margin as needed
     color: Colors.white,
+    fontFamily: 'SFProText-Bold',
   },
   subHeading: {
     fontSize: WP(4), // Adjust the font size as needed
