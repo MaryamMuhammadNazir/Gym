@@ -1,9 +1,10 @@
 import React from 'react';
-import {LongPressGestureHandler} from 'react-native-gesture-handler';
+import { LongPressGestureHandler } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
 // import Constants from 'expo-constants';
-import {SBTextItem} from './SBTextitem';
-import SBImageItem from './SBImageItem';
+// import {SBTextItem} from './SBTextitem';
+import SBImageItem from './SBImageItem'; import { SBTextItem } from './SBTextItem';
+
 
 const SBItem = props => {
   const {
@@ -22,10 +23,10 @@ const SBItem = props => {
       onActivated={() => {
         setIsPretty(!isPretty);
       }}>
-      <Animated.View testID={testID} style={{flex: 1}} {...animatedViewProps}>
+      <Animated.View testID={testID} style={{ flex: 1 }} {...animatedViewProps}>
         {isPretty || img ? (
           <SBImageItem
-            style={{height: 1000, width: 100}}
+            style={{ height: 1000, width: 100 }}
             index={index}
             showIndex={typeof index === 'number' && showIndex}
             img={img}

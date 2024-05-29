@@ -8,21 +8,21 @@ import {
   Button,
   FlatList,
 } from 'react-native';
-import {Sound} from 'react-native-sound';
-import React, {useState, useEffect} from 'react';
+// import { Sound } from 'react-native-sound';
+import React, { useState, useEffect } from 'react';
 import CustomizeHeader from '../../../components/CustomizeHeader';
-import {Colors, Images, data} from '../../../assets';
-import {WP, HP} from '../../../utility/ResponsiveSize';
+import { Colors, Images, data } from '../../../assets';
+import { WP, HP } from '../../../utility/ResponsiveSize';
 import CustomHeading from '../../../components/CustomHeading';
 import dings from '../../../assets/audios/audio11.mp3';
 import LottieView from 'lottie-react-native';
 import Animations from '../../../assets/animations/Animations';
-
+let Sound = require('react-native-sound');
 const SoundCustom = () => {
   const [playing, setPlaying] = useState(false);
   const [selected, setSelected] = useState(dings);
 
-  var Sound = require('react-native-sound');
+
   Sound.setCategory('Playback');
   var audio = new Sound(selected, null, error => {
     if (error) {
@@ -32,15 +32,15 @@ const SoundCustom = () => {
   });
 
   const files = [
-    {id: '1', file: dings, time: '3:00'},
-    {id: '2', file: dings, time: '2:30'},
-    {id: '3', file: dings, time: '1:70'},
-    {id: '4', file: dings, time: '4:00'},
-    {id: '5', file: dings, time: '3:00'},
-    {id: '6', file: dings, time: '5:00'},
-    {id: '7', file: dings, time: '9:08'},
-    {id: '8', file: dings, time: '1:00'},
-    {id: '9', file: dings, time: '2:00'},
+    { id: '1', file: dings, time: '3:00' },
+    { id: '2', file: dings, time: '2:30' },
+    { id: '3', file: dings, time: '1:70' },
+    { id: '4', file: dings, time: '4:00' },
+    { id: '5', file: dings, time: '3:00' },
+    { id: '6', file: dings, time: '5:00' },
+    { id: '7', file: dings, time: '9:08' },
+    { id: '8', file: dings, time: '1:00' },
+    { id: '9', file: dings, time: '2:00' },
   ];
 
   useEffect(() => {
@@ -70,7 +70,7 @@ const SoundCustom = () => {
 
   const [selectedItem, setSelectedText] = useState('Imported music');
 
-  const renderItem = ({item}) => (
+  const renderItem = ({ item }) => (
     <TouchableOpacity
       style={{
         width: '100%',
@@ -82,11 +82,11 @@ const SoundCustom = () => {
         justifyContent: 'space-between',
       }}
       onPress={() => setSelected(item.file)}>
-      <View style={{flexDirection: 'row'}}>
-        <Text style={{color: Colors.white, fontSize: 15, padding: 18}}>
+      <View style={{ flexDirection: 'row' }}>
+        <Text style={{ color: Colors.white, fontSize: 15, padding: 18 }}>
           {item.time}
         </Text>
-        <Text style={{color: Colors.white, fontSize: 15, padding: 18}}>
+        <Text style={{ color: Colors.white, fontSize: 15, padding: 18 }}>
           {item.file}
         </Text>
       </View>
@@ -192,13 +192,14 @@ const SoundCustom = () => {
               }}>
               Your Queue
             </Text>
+            <Button title={playing ? 'Pause' : 'Play'} onPress={playPause} />
+
           </View>
           <FlatList
             data={files}
             renderItem={renderItem}
             keyExtractor={item => item.id}
           />
-          <Button title={playing ? 'Pause' : 'Play'} onPress={playPause} />
         </View>
       ) : (
         <View style={styles.connectAppsContainer}>
@@ -246,17 +247,17 @@ const styles = StyleSheet.create({
     paddingBottom: HP(3),
   },
   btnView: {
-    width: '55.5%',
+    width: '60%',
     flexDirection: 'row',
     borderRadius: HP(1),
-    backgroundColor: Colors.cardclr,
-    flexWrap: 'wrap',
+    backgroundColor: Colors.cardclr, overflow: "hidden"
+    , flexWrap: 'wrap',
     justifyContent: 'center',
     alignContent: 'center',
     marginLeft: HP(2),
   },
   item: {
-    padding: HP(1),
+    padding: HP(1), paddingLeft: 0
   },
   itemText: {
     color: Colors.white,
@@ -264,6 +265,8 @@ const styles = StyleSheet.create({
   },
   importedMusic: {
     flex: 1,
+
+
   },
   connectAppsContainer: {
     flex: 1,
@@ -296,7 +299,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  ytMusicTxt: {color: Colors.white, fontSize: HP(1.5), marginTop: HP(1)},
+  ytMusicTxt: { color: Colors.white, fontSize: HP(1.5), marginTop: HP(1) },
   playButtonImage: {
     height: 40,
     width: 40,
