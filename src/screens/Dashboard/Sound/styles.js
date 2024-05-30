@@ -24,17 +24,19 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.cardclr,
     overflow: 'hidden',
     flexWrap: 'wrap',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     alignContent: 'center',
     marginLeft: HP(2),
   },
   item: {
     padding: HP(1),
-    paddingLeft: 0,
+    alignItems: 'center',
   },
   itemText: {
     color: Colors.white,
     padding: WP(0.25),
+    alignSelf: 'center',
+    alignItems: 'center',
   },
   importedMusic: {
     flex: 1,

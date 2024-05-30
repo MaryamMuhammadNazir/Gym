@@ -2,8 +2,6 @@ import React, {useState, useEffect, useRef} from 'react';
 import {View, Text, Image, StyleSheet, Animated} from 'react-native';
 import {Colors, Images} from '../../../assets';
 import {HP, WP} from '../../../utility/ResponsiveSize';
-// import {Svg, Circle} from 'react-native-svg';
-// import LinearGradient from 'react-native-linear-gradient';
 import {AnimatedCircularProgress} from 'react-native-circular-progress';
 
 const CaloriesTracker = () => {
@@ -23,7 +21,7 @@ const CaloriesTracker = () => {
 
   return (
     <View style={styles.container}>
-      <View style={[styles.containerbar, {marginBottom: HP(10)}]}>
+      <View style={[styles.containerbar, {marginBottom: HP(3)}]}>
         <Text style={styles.title}>Calories Tracker</Text>
         <AnimatedCircularProgress
           ref={circularProgressRef}

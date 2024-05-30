@@ -8,13 +8,13 @@ import {
   Button,
   FlatList,
 } from 'react-native';
-// import { Sound } from 'react-native-sound';
 import React, {useState, useEffect} from 'react';
 import CustomizeHeader from '../../../components/CustomizeHeader';
 import {Colors, Images, data} from '../../../assets';
 import {WP, HP} from '../../../utility/ResponsiveSize';
 import CustomHeading from '../../../components/CustomHeading';
 import dings from '../../../assets/audios/audio11.mp3';
+import dings1 from '../../../assets/audios/audio12.mp3';
 import LottieView from 'lottie-react-native';
 import Animations from '../../../assets/animations/Animations';
 import {styles} from './styles';
@@ -22,6 +22,7 @@ let Sound = require('react-native-sound');
 const SoundCustom = () => {
   const [playing, setPlaying] = useState(false);
   const [selected, setSelected] = useState(dings);
+  const [songName, setSongName] = useState('AP - music from the boat');
 
   Sound.setCategory('Playback');
   var audio = new Sound(selected, null, error => {
@@ -32,15 +33,30 @@ const SoundCustom = () => {
   });
 
   const files = [
-    {id: '1', file: dings, time: '3:00'},
-    {id: '2', file: dings, time: '2:30'},
-    {id: '3', file: dings, time: '1:70'},
-    {id: '4', file: dings, time: '4:00'},
-    {id: '5', file: dings, time: '3:00'},
-    {id: '6', file: dings, time: '5:00'},
-    {id: '7', file: dings, time: '9:08'},
-    {id: '8', file: dings, time: '1:00'},
-    {id: '9', file: dings, time: '2:00'},
+    {id: '1', file: dings, data: 'Going Bad (feat Drake)', time: '3:00'},
+    {
+      id: '2',
+      file: dings1,
+      data: 'Cloak and Dagger -Princethekid',
+      time: '2:30',
+    },
+    {id: '3', file: dings, data: 'Love Sosa - Chief Keef', time: '1:70'},
+    {
+      id: '4',
+      file: dings1,
+      data: 'Just Wanna Rock - Lil Uzi Vert',
+      time: '4:00',
+    },
+    {id: '5', file: dings, data: 'In Love Now - Vidora', time: '3:00'},
+    {
+      id: '6',
+      file: dings1,
+      data: 'Cloak and Dagger -Princethekid',
+      time: '5:00',
+    },
+    {id: '7', file: dings, data: 'In Love Now - Vidora', time: '9:08'},
+    {id: '8', file: dings1, data: 'Love Sosa - Chief Keef', time: '1:00'},
+    {id: '9', file: dings, data: 'In Love Now - Vidora', time: '2:00'},
   ];
 
   useEffect(() => {
@@ -80,10 +96,13 @@ const SoundCustom = () => {
         alignItems: 'center',
         borderColor: Colors.white,
         justifyContent: 'space-between',
+        bottom: HP(4),
       }}
       // onPress={() => setSelected(item.file)}>
       onPress={() => {
         setSelected(item.file);
+        playPause();
+        setSongName(item.data);
         setPlaying(true);
       }}>
       <View style={{flexDirection: 'row'}}>
@@ -91,7 +110,7 @@ const SoundCustom = () => {
           {item.time}
         </Text>
         <Text style={{color: Colors.white, fontSize: 15, padding: 18}}>
-          {item.file}
+          {item.data}
         </Text>
       </View>
       <View>
@@ -154,7 +173,7 @@ const SoundCustom = () => {
               borderRadius: 20,
               alignSelf: 'center',
               flexDirection: 'row',
-              justifyContent: 'space-between',
+              overflow: 'hidden',
               alignItems: 'center',
             }}>
             <View
@@ -177,14 +196,20 @@ const SoundCustom = () => {
               <Text
                 style={{
                   color: Colors.white,
-                  alignItems: 'flex-start',
-                  alignSelf: 'flex-start',
-                  justifyContent: 'flex-start',
+                  alignItems: 'center',
+                  alignSelf: 'center',
+                  justifyContent: 'center',
+                  width: '100%',
+                  fontSize: HP(1.75),
+                  padding: HP(1),
                 }}>
-                {selected}
+                {songName}
               </Text>
             </View>
-            <TouchableOpacity onPress={() => setPlaying(!playing)}>
+            {/* <TouchableOpacity onPress={() => setPlaying(!playing)}> */}
+            <TouchableOpacity
+              style={{right: 10, position: 'absolute'}}
+              onPress={() => playPause()}>
               <Image
                 source={playing == false ? Images.BELL : Images.PLAYFILLED}
                 style={{

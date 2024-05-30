@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from 'react';
+import React, {forwardRef, useState} from 'react';
 import {
   View,
   Text,
@@ -8,18 +8,18 @@ import {
   Dimensions,
   ImageBackground,
 } from 'react-native';
-import BottomSheet, { BottomSheetModal } from '@gorhom/bottom-sheet';
-import { HP, WP } from '../../utility/ResponsiveSize';
-import { Colors, Images } from '../../assets';
+import BottomSheet, {BottomSheetModal} from '@gorhom/bottom-sheet';
+import {HP, WP} from '../../utility/ResponsiveSize';
+import {Colors, Images} from '../../assets';
 import * as Progress from 'react-native-progress';
 import Carousel from 'react-native-reanimated-carousel'; // Import the Carousel component
 
 const CustomBottomSheet = forwardRef(
   (
-    { snapPoints, handlePressEndSession, isImageSlideOpen, setImageSliderOpen },
+    {snapPoints, handlePressEndSession, isImageSlideOpen, setImageSliderOpen},
     ref,
   ) => {
-    const [progress, setProgress] = useState(0.3);
+    const [progress, setProgress] = useState(0.1);
     const width = Dimensions.get('window').width;
 
     const [images, setImages] = React.useState([
@@ -31,28 +31,35 @@ const CustomBottomSheet = forwardRef(
         subTxt: '10 miutes',
       },
       {
-        id: 0,
+        id: 1,
         url: 'https://picsum.photos/id/2/200/300',
         time: '9:24:00',
         text: 'Warm up',
         subTxt: '10 miutes',
       },
       {
-        id: 0,
+        id: 2,
+        url: 'https://picsum.photos/id/2/200/300',
+        time: '9:24:00',
+        text: 'Warm up',
+        subTxt: '10 miutes',
+      },
+      {
+        id: 3,
         url: 'https://picsum.photos/id/3/200/300',
         time: '6:24:00',
         text: 'Jump squats',
         subTxt: '3 sets , 4 reps each',
       },
       {
-        id: 0,
+        id: 4,
         url: 'https://picsum.photos/id/4/200/300',
         time: '1:24:00',
         text: 'Warm up',
         subTxt: '3 sets , 4 reps each',
       },
       {
-        id: 0,
+        id: 5,
         url: 'https://picsum.photos/id/5/200/300',
         time: '4:24:00',
         text: 'Warm up',
@@ -73,7 +80,7 @@ const CustomBottomSheet = forwardRef(
       }
     };
     return (
-      <BottomSheetModal ref={ref} snapPoints={snapPoints} index={0} >
+      <BottomSheetModal ref={ref} snapPoints={snapPoints} index={0}>
         <View
           style={{
             alignItems: 'center',
@@ -82,11 +89,12 @@ const CustomBottomSheet = forwardRef(
             backgroundColor: Colors.white,
           }}>
           {isImageSlideOpen === true ? (
-            <>
-              <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+            <View style={{alignItems: 'center', justifyContent: 'center'}}>
+              {/* top view */}
+              <View style={{justifyContent: 'center', alignItems: 'center'}}>
                 <Text
                   style={{
-                    marginVertical: HP(2),
+                    marginVertical: HP(1),
                     fontSize: HP(3),
                     color: Colors.black,
                     fontWeight: 'bold',
@@ -94,23 +102,31 @@ const CustomBottomSheet = forwardRef(
                   }}>
                   Today's routine for you
                 </Text>
-                <Text>7 exercises, 3 sets, 8 reps</Text>
+                <Text
+                  style={{
+                    fontSize: HP(1.5),
+                    color: Colors.black,
+                    fontWeight: '700',
+                    alignSelf: 'center',
+                  }}>
+                  7 exercises, 3 sets, 8 reps
+                </Text>
               </View>
-              {/* Use here the progress bar */}
-              <View style={{ marginTop: HP(3) }}>
-                <Progress.Bar
-                  progress={progress}
-                  width={300}
-                  unfilledColor={Colors.tabbgclr}
-                  borderWidth={0}
-                  color={Colors.primary}
-                  height={15}
-                  borderRadius={20}
-                  fillBorderRadius={10}
-                  useNativeDriver={true}
-                />
-              </View>
-              <View style={{ flex: 1 }}>
+
+              <View style={{flex: 0.87}}>
+                <View style={{marginTop: HP(3)}}>
+                  <Progress.Bar
+                    progress={progress}
+                    width={300}
+                    unfilledColor={Colors.tabbgclr}
+                    borderWidth={0}
+                    color={Colors.primary}
+                    height={15}
+                    borderRadius={20}
+                    fillBorderRadius={10}
+                    useNativeDriver={true}
+                  />
+                </View>
                 {/* Use the Carousel component here */}
                 <Carousel
                   width={300}
@@ -128,19 +144,18 @@ const CustomBottomSheet = forwardRef(
                   scrollAnimationDuration={1000}
                   onSnapToItem={index => {
                     // setCurrentIndex(index); // Update the current index state
-                    // Update the progress based on the current index
                     const newProgress = (index + 1) / images.length; // Calculate the new progress
                     setProgress(newProgress); // Update the progress state
                   }}
                   data={images}
-                  renderItem={({ item }) => (
+                  renderItem={({item}) => (
                     <View
                       style={{
                         flex: 1,
                         justifyContent: 'center',
                       }}>
                       <ImageBackground
-                        source={{ uri: item.url }}
+                        source={{uri: item.url}}
                         borderRadius={20}
                         style={{
                           width: 300,
@@ -163,7 +178,7 @@ const CustomBottomSheet = forwardRef(
                           <Image
                             source={Images.PLAYFILLED}
                             tintColor={Colors.white}
-                            style={{ height: 40, width: 40, resizeMode: 'cover' }}
+                            style={{height: 40, width: 40, resizeMode: 'cover'}}
                           />
                         </ImageBackground>
                         <View
@@ -217,11 +232,13 @@ const CustomBottomSheet = forwardRef(
                   )}
                 />
               </View>
-              <Text>Swipe when done to view next</Text>
-            </>
+              <Text style={{color: Colors.tabbgclr, fontSize: HP(1.7)}}>
+                Swipe when done to view next
+              </Text>
+            </View>
           ) : (
             <>
-              <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+              <View style={{justifyContent: 'center', alignItems: 'center'}}>
                 <Text
                   style={{
                     marginVertical: HP(3),
@@ -232,7 +249,7 @@ const CustomBottomSheet = forwardRef(
                   }}>
                   You're on a roll!
                 </Text>
-                <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                <View style={{alignItems: 'center', justifyContent: 'center'}}>
                   <Text
                     style={{
                       width: '70%',
@@ -250,7 +267,7 @@ const CustomBottomSheet = forwardRef(
               <View>
                 <Image
                   source={Images.YOGAGIRL}
-                  style={{ height: 200, width: 200, resizeMode: 'contain' }}
+                  style={{height: 200, width: 200, resizeMode: 'contain'}}
                 />
               </View>
               <TouchableOpacity
@@ -278,9 +295,10 @@ const CustomBottomSheet = forwardRef(
 
           <View
             style={{
-              marginBottom: HP(9),
+              marginBottom: HP(1),
               justifyContent: 'center',
               alignItems: 'center',
+              overflow: 'hidden',
             }}>
             <View>
               <TouchableOpacity onPress={handlePressEndSession}>
@@ -288,7 +306,7 @@ const CustomBottomSheet = forwardRef(
                   style={{
                     color: 'red',
                     fontWeight: 'bold',
-                    padding: HP(2),
+                    padding: HP(3),
                     alignSelf: 'center',
                   }}>
                   End session

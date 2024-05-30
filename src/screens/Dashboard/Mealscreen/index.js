@@ -27,15 +27,16 @@ const MealScreen = () => {
           style={{
             height: 350,
             width: 350,
-            marginTop: HP(13),
+            // marginTop: HP(13),
             resizeMode: 'cover',
           }}
         />
         <Text style={styles.mainHeading}>We are still building</Text>
         <Text style={styles.subHeading}>
-          In our quest to give you the best service, we're working on a feature
-          that help improve your health by suggesting healty meals that are in
-          line with your body goals
+          In our quest to give you the best service, we're <Text>{'\n'}</Text>{' '}
+          working on a feature that help improve your health<Text>{'\n'}</Text>{' '}
+          by suggesting healty meals that are in line with your{' '}
+          <Text>{'\n'}</Text> body goals
         </Text>
       </View>
     </View>
@@ -46,7 +47,7 @@ export default MealScreen;
 
 const styles = StyleSheet.create({
   mainHeading: {
-    fontSize: WP(8), // Adjust the font size as needed
+    fontSize: WP(5), // Adjust the font size as needed
     fontWeight: 'bold',
     marginBottom: HP(0), // Adjust the margin as needed
     color: Colors.primary,
@@ -58,20 +59,13 @@ const styles = StyleSheet.create({
   subHeading: {
     fontSize: 16, // Adjust the font size as needed
     color: Colors.white,
-    marginBottom: HP(2),
-    width: WP(73),
     alignSelf: 'center',
     textAlign: 'center',
-    marginTop: HP(3),
+    marginTop: HP(2),
   },
   contentContainer: {
-    // padding: WP(5),
-    // paddingHorizontal: WP(3),
-    // borderRadius: WP(5),
-    // justifyContent: 'center',
+    justifyContent: 'center',
     alignItems: 'center',
-    // height: '100%',
-
     flex: 1,
   },
 });

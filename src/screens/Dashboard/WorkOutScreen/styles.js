@@ -98,7 +98,7 @@ export const styles = StyleSheet.create({
   },
   video: {
     width: '100%',
-    height: HP(30),
+    height: HP(70),
   },
   closeButton: {
     // marginTop: 20,
@@ -106,8 +106,8 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     borderRadius: 50,
     alignItems: 'center',
-    height: 50,
-    width: 50,
+    height: 40,
+    width: 40,
     justifyContent: 'center',
     position: 'absolute',
     top: HP(5),

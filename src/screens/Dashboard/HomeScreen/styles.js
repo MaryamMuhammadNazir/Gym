@@ -1,7 +1,7 @@
-import { Colors } from '../../../assets';
-import { HP, WP } from '../../../utility/ResponsiveSize';
+import {Colors} from '../../../assets';
+import {HP, WP} from '../../../utility/ResponsiveSize';
 
-const { StyleSheet } = require('react-native');
+const {StyleSheet} = require('react-native');
 
 const styles = StyleSheet.create({
   container: {
@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
 
   contentContainerStyle: {
     paddingHorizontal: WP(5),
-    paddingBottom: HP(5),
     flexGrow: 1,
   },
   dateText: {

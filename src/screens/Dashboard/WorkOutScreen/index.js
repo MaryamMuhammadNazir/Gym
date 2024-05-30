@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   Platform,
   View,
@@ -10,12 +10,12 @@ import {
   Modal,
 } from 'react-native';
 import CustomizeHeader from '../../../components/CustomizeHeader';
-import { Colors, Images, Videos, data } from '../../../assets';
-import { WP, HP } from '../../../utility/ResponsiveSize';
+import {Colors, Images, Videos, data} from '../../../assets';
+import {WP, HP} from '../../../utility/ResponsiveSize';
 import CustomHeading from '../../../components/CustomHeading';
 import Video from 'react-native-video';
-import { styles } from './styles';
-import { useNavigation } from '@react-navigation/native';
+import {styles} from './styles';
+import {useNavigation} from '@react-navigation/native';
 import Routes from '../../../navigation/Routes';
 
 const Workout = () => {
@@ -33,11 +33,11 @@ const Workout = () => {
     <View
       style={[
         styles.container,
-        { paddingTop: Platform.OS === 'ios' ? HP(5) : 0 },
+        {paddingTop: Platform.OS === 'ios' ? HP(5) : 0},
       ]}>
       <CustomizeHeader isVisible={false} />
 
-      <View style={{ paddingHorizontal: WP(5) }}>
+      <View style={{paddingHorizontal: WP(5)}}>
         <CustomHeading
           mainText="Work Out"
           subText="We have videos curated for you"
@@ -95,7 +95,7 @@ const Workout = () => {
           <Text style={styles.sectionTitle}>Recommendation</Text>
           <View style={styles.recommendationContainer}>
             <TouchableOpacity
-              onPress={() => handleThumbnailPress(Videos.YOGA1)} // Replace with actual video source
+              onPress={() => handleThumbnailPress(Videos.YOGA2)} // Replace with actual video source
               style={styles.card}>
               <ImageBackground
                 borderRadius={HP(3)}
@@ -114,7 +114,7 @@ const Workout = () => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => handleThumbnailPress(Videos.YOGA1)} // Replace with actual video source
+              onPress={() => handleThumbnailPress(Videos.YOGA3)} // Replace with actual video source
               style={styles.card}>
               <ImageBackground
                 borderRadius={HP(3)}
@@ -148,14 +148,13 @@ const Workout = () => {
               controls={true}
               resizeMode="contain"
             />
-
           </View>
           <TouchableOpacity
             style={styles.closeButton}
             onPress={() => setModalVisible(false)}>
             <Image
               source={Images.CLOSE}
-              style={{ height: 50, width: 50, resizeMode: 'cover' }}
+              style={{height: 40, width: 40, resizeMode: 'cover'}}
             />
           </TouchableOpacity>
         </View>
