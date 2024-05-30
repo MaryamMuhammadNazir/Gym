@@ -7,6 +7,7 @@ import {
   Text,
   Button,
   FlatList,
+  Animated,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import CustomizeHeader from '../../../components/CustomizeHeader';
@@ -16,6 +17,7 @@ import CustomHeading from '../../../components/CustomHeading';
 import dings from '../../../assets/audios/audio11.mp3';
 import dings1 from '../../../assets/audios/audio12.mp3';
 import LottieView from 'lottie-react-native';
+import {FadeIn, FadeOut} from 'react-native-reanimated';
 import Animations from '../../../assets/animations/Animations';
 import {styles} from './styles';
 let Sound = require('react-native-sound');
@@ -83,7 +85,16 @@ const SoundCustom = () => {
       setPlaying(true);
     }
   };
-
+  const handlePlayPause = (file, data) => {
+    if (playing && file === selected) {
+      audio.pause();
+      setPlaying(false);
+    } else {
+      setSelected(file);
+      setSongName(data);
+      playPause(file);
+    }
+  };
   const [selectedItem, setSelectedText] = useState('Imported music');
 
   const renderItem = ({item}) => (
@@ -96,12 +107,14 @@ const SoundCustom = () => {
         alignItems: 'center',
         borderColor: Colors.white,
         justifyContent: 'space-between',
-        bottom: HP(4),
+        // marginVertical: HP(4),
       }}
       // onPress={() => setSelected(item.file)}>
       onPress={() => {
+        console.log('played item id:', selected);
         setSelected(item.file);
-        playPause();
+        // playPause();
+        handlePlayPause(selected, songName);
         setSongName(item.data);
         setPlaying(true);
       }}>
@@ -153,7 +166,7 @@ const SoundCustom = () => {
         ))}
       </View>
       {selectedItem === 'Imported music' ? (
-        <View style={styles.importedMusic}>
+        <Animated.View entering={FadeIn} style={styles.importedMusic}>
           <View>
             <Text
               style={{
@@ -209,7 +222,10 @@ const SoundCustom = () => {
             {/* <TouchableOpacity onPress={() => setPlaying(!playing)}> */}
             <TouchableOpacity
               style={{right: 10, position: 'absolute'}}
-              onPress={() => playPause()}>
+              onPress={
+                () => handlePlayPause(selected, songName)
+                //  playPause()
+              }>
               <Image
                 source={playing == false ? Images.BELL : Images.PLAYFILLED}
                 style={{
@@ -239,9 +255,9 @@ const SoundCustom = () => {
             renderItem={renderItem}
             keyExtractor={item => item.id}
           />
-        </View>
+        </Animated.View>
       ) : (
-        <View style={styles.connectAppsContainer}>
+        <Animated.View exiting={FadeOut} style={styles.connectAppsContainer}>
           <Text style={styles.connectAppsText}>Connect your apps</Text>
           <View style={styles.connectAppsInnerContainer}>
             <TouchableOpacity style={styles.musicCard}>
@@ -262,7 +278,7 @@ const SoundCustom = () => {
               />
             </TouchableOpacity>
           </View>
-        </View>
+        </Animated.View>
       )}
     </View>
   );

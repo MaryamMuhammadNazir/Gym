@@ -62,8 +62,8 @@ const EditProfile = () => {
               disabled={false}
               activeText={'On'}
               inActiveText={'Off'}
-              circleSize={30}
-              barHeight={35}
+              circleSize={20}
+              barHeight={25}
               circleBorderWidth={0}
               backgroundActive={'green'}
               backgroundInactive={Colors.secondary}
@@ -76,7 +76,7 @@ const EditProfile = () => {
               switchLeftPx={2}
               switchRightPx={2}
               switchWidthMultiplier={2}
-              switchBorderRadius={30}
+              switchBorderRadius={20}
               style={styles.switchStyle}
             />
           </View>
@@ -91,8 +91,8 @@ const EditProfile = () => {
               disabled={false}
               activeText={'On'}
               inActiveText={'Off'}
-              circleSize={30}
-              barHeight={35}
+              circleSize={20}
+              barHeight={25}
               circleBorderWidth={0}
               backgroundActive={'green'}
               backgroundInactive={Colors.secondary}
@@ -105,7 +105,7 @@ const EditProfile = () => {
               switchLeftPx={2}
               switchRightPx={2}
               switchWidthMultiplier={2}
-              switchBorderRadius={30}
+              switchBorderRadius={20}
               style={styles.switchStyle}
             />
           </View>

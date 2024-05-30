@@ -21,8 +21,10 @@ const CaloriesTracker = () => {
 
   return (
     <View style={styles.container}>
-      <View style={[styles.containerbar, {marginBottom: HP(3)}]}>
-        <Text style={styles.title}>Calories Tracker</Text>
+      <View style={[styles.containerbar]}>
+        <View style={{width: '100%'}}>
+          <Text style={styles.title}>Calories Tracker</Text>
+        </View>
         <AnimatedCircularProgress
           ref={circularProgressRef}
           size={170}
@@ -49,7 +51,7 @@ const CaloriesTracker = () => {
                       {
                         translateY: fillValue.interpolate({
                           inputRange: [0, 100],
-                          outputRange: [0, -200],
+                          outputRange: [0, 100],
                         }),
                       },
                     ],
@@ -84,19 +86,20 @@ export default CaloriesTracker;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
+    marginBottom: HP(5),
   },
   containerbar: {
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: Colors.cardclr,
     borderRadius: WP(5),
-    height: HP(30),
   },
   title: {
     color: Colors.white,
     fontSize: 20,
-    alignSelf: 'flex-start',
-    padding: HP(1),
+    padding: 10,
+    margin: 10,
   },
   fillContainer: {
     alignItems: 'center',
@@ -105,6 +108,7 @@ const styles = StyleSheet.create({
     width: 30,
     height: 200,
     resizeMode: 'cover',
+    transform: [{rotate: '-30deg'}],
   },
   fillText: {
     fontSize: 18,
@@ -117,10 +121,10 @@ const styles = StyleSheet.create({
   },
   caloriesText: {
     color: Colors.white,
-    fontSize: 30,
+    fontSize: 17,
   },
   weekText: {
     color: Colors.white,
-    fontSize: 20,
+    fontSize: 12,
   },
 });

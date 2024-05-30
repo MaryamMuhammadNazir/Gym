@@ -12,6 +12,7 @@ import {styles} from './styles';
 import {Colors, Images} from '../../../assets';
 import {useNavigation} from '@react-navigation/native';
 import {HP, WP} from '../../../utility/ResponsiveSize';
+import {FadeIn, FadeInDown, FadeOut} from 'react-native-reanimated';
 
 const Accountsetting = () => {
   const navigation = useNavigation();
@@ -33,13 +34,16 @@ const Accountsetting = () => {
       {
         translateY: animation.interpolate({
           inputRange: [0.5, 1],
-          outputRange: [20, 0], // Starts 50 units below and moves to its original position
+          outputRange: [0, 0], // Starts 50 units below and moves to its original position
         }),
       },
     ],
   };
   return (
-    <Animated.View style={[styles.container, animatedStyle]}>
+    <Animated.View
+      enentering={FadeIn}
+      exiting={FadeOut}
+      style={[styles.container, animatedStyle]}>
       <View style={styles.contentContainer}>
         {/* Profile header */}
         <View style={styles.header}>
@@ -194,7 +198,8 @@ const Accountsetting = () => {
                 marginTop: HP(1.2),
                 backgroundColor: Colors.cardclr,
                 borderRadius: 20,
-                // justifyContent: 'center',
+                width: '95%',
+                alignSelf: 'center',
               }}>
               <View style={{height: 100, width: 100}}>
                 <Image

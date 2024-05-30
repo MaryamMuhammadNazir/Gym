@@ -16,7 +16,7 @@ const Splash = () => {
     // Navigate to SPREADCLR after 3 seconds
     setTimeout(() => {
       navigation.replace(Routes.SPREADCLR);
-    }, 3000);
+    }, 2000);
 
     return () => {
       StatusBar.setHidden(false);

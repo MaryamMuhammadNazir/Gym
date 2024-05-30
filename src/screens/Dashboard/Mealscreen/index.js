@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   subHeading: {
-    fontSize: 16, // Adjust the font size as needed
+    fontSize: 13, // Adjust the font size as needed
     color: Colors.white,
     alignSelf: 'center',
     textAlign: 'center',

@@ -37,6 +37,7 @@ export const styles = StyleSheet.create({
     padding: WP(0.25),
     alignSelf: 'center',
     alignItems: 'center',
+    fontFamily: 'SFProText-Regular',
   },
   importedMusic: {
     flex: 1,
@@ -48,7 +49,9 @@ export const styles = StyleSheet.create({
   },
   connectAppsText: {
     color: 'white',
-    fontSize: HP(3),
+    fontSize: HP(2),
+
+    fontFamily: 'SFPro-Semibold',
   },
   connectAppsInnerContainer: {
     flexDirection: 'row',
@@ -72,7 +75,12 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  ytMusicTxt: {color: Colors.white, fontSize: HP(1.5), marginTop: HP(1)},
+  ytMusicTxt: {
+    color: Colors.white,
+    fontSize: HP(1.5),
+    marginTop: HP(1),
+    fontFamily: 'SFProText-Regular',
+  },
   playButtonImage: {
     height: 40,
     width: 40,

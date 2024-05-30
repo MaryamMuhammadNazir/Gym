@@ -17,9 +17,10 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   dateText: {
-    fontSize: WP(3),
+    fontSize: WP(2.5),
     alignContent: 'center',
     color: Colors.white,
+    fontFamily: 'SFProText-Regular',
     justifyContent: 'flex-start',
   },
   barConatianer: {
@@ -58,8 +59,9 @@ const styles = StyleSheet.create({
   },
   routineText: {
     color: Colors.white,
-    fontSize: HP(2.5),
+    fontSize: HP(2.25),
     marginBottom: HP(1),
+    fontFamily: 'SFPro-Semibold',
   },
   exerciseContainer: {
     flexDirection: 'row',
@@ -70,9 +72,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   exerciseText: {
-    fontSize: HP(1.75),
+    fontSize: HP(1.65),
     color: Colors.white,
     marginHorizontal: HP(2),
+    fontFamily: 'SFProText-Regular',
   },
   image: {},
   textContainer: {},
