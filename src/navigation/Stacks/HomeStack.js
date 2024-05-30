@@ -1,6 +1,6 @@
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
-import {HomeScreen, LoginScreen, SignupScreen} from '../../screens';
+import { HomeScreen, LoginScreen, SignupScreen } from '../../screens';
 import Routes from '../Routes';
 import EditProfile from '../../screens/EditProfile';
 import Accountsetting from '../../screens/Auth/Accountsetting';
@@ -12,14 +12,22 @@ const HomeStack = () => {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
-        animationDuration: 6000,
-        animation: 'fade',
+
+        // animation: 'fade',
       }}>
-      <Stack.Screen name={Routes.HOME_SCREEN} component={HomeScreen} />
-      <Stack.Screen name={Routes.EDITPROFLE} component={EditProfile} />
-      <Stack.Screen name={Routes.ACCOUNTSETTING} component={Accountsetting} />
+      <Stack.Screen
+        options={{
+          animation: 'fade',
+        }}
+        name={Routes.HOME_SCREEN} component={HomeScreen} />
+      <Stack.Screen options={{
+        animation: 'fade',
+      }} name={Routes.EDITPROFLE} component={EditProfile} />
+      <Stack.Screen options={{
+        animation: 'fade',
+      }} name={Routes.ACCOUNTSETTING} component={Accountsetting} />
     </Stack.Navigator>
   );
 };
 
-export {HomeStack};
+export { HomeStack };

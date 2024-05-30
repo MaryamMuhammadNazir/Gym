@@ -1,9 +1,9 @@
-import {StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import {WP, HP} from '../../utility/ResponsiveSize';
-import {Colors} from '../../assets';
+import { WP, HP } from '../../utility/ResponsiveSize';
+import { Colors } from '../../assets';
 
-const CustomHeading = ({mainText, subText}) => {
+const CustomHeading = ({ mainText, subText }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.mainHeading}>{mainText}</Text>
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     // fontWeight: 'bold',
     marginBottom: HP(0), // Adjust the margin as needed
     color: Colors.white,
-    fontFamily: 'SFProText-Bold',
+    fontFamily: "SFProText-Bold",
   },
   subHeading: {
     fontSize: WP(4), // Adjust the font size as needed

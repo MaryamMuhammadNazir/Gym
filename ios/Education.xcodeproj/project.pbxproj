@@ -15,6 +15,10 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-Education-EducationTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Education-EducationTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		C6A50D615A6F446F87845541 /* SFPro-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 96C80141096C434B94406E6D /* SFPro-Semibold.ttf */; };
+		F70A288FDFBA4F20B7D3AE32 /* SFProText-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A6E8FABD9A2487CBC7158AC /* SFProText-Bold.ttf */; };
+		FFEEFFC160024344905EBA63 /* SFProText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 47F426CD86C34F6DA724907E /* SFProText-Regular.ttf */; };
+		A40470C37B3A45F896B3C0C3 /* Fonts.js in Resources */ = {isa = PBXBuildFile; fileRef = 1D9F61A9CEE8403EBB7CC0FE /* Fonts.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		89C6BE57DB24E9ADA2F236DE /* Pods-Education-EducationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Education-EducationTests.release.xcconfig"; path = "Target Support Files/Pods-Education-EducationTests/Pods-Education-EducationTests.release.xcconfig"; sourceTree = "<group>"; };
 		C7C43E780C7B2D2B26656009 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = Education/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		96C80141096C434B94406E6D /* SFPro-Semibold.ttf */ = {isa = PBXFileReference; name = "SFPro-Semibold.ttf"; path = "../src/assets/fonts/SFPro-Semibold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7A6E8FABD9A2487CBC7158AC /* SFProText-Bold.ttf */ = {isa = PBXFileReference; name = "SFProText-Bold.ttf"; path = "../src/assets/fonts/SFProText-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		47F426CD86C34F6DA724907E /* SFProText-Regular.ttf */ = {isa = PBXFileReference; name = "SFProText-Regular.ttf"; path = "../src/assets/fonts/SFProText-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1D9F61A9CEE8403EBB7CC0FE /* Fonts.js */ = {isa = PBXFileReference; name = "Fonts.js"; path = "../src/assets/fonts/Fonts.js"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +135,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				1A6C995701A247F6AA2AB588 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -152,6 +161,18 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		1A6C995701A247F6AA2AB588 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				96C80141096C434B94406E6D /* SFPro-Semibold.ttf */,
+				7A6E8FABD9A2487CBC7158AC /* SFProText-Bold.ttf */,
+				47F426CD86C34F6DA724907E /* SFProText-Regular.ttf */,
+				1D9F61A9CEE8403EBB7CC0FE /* Fonts.js */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -249,6 +270,10 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				032F1C0AAE43EADE6D7A2F04 /* PrivacyInfo.xcprivacy in Resources */,
+				C6A50D615A6F446F87845541 /* SFPro-Semibold.ttf in Resources */,
+				F70A288FDFBA4F20B7D3AE32 /* SFProText-Bold.ttf in Resources */,
+				FFEEFFC160024344905EBA63 /* SFProText-Regular.ttf in Resources */,
+				A40470C37B3A45F896B3C0C3 /* Fonts.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

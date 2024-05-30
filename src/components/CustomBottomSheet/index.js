@@ -1,4 +1,4 @@
-import React, {forwardRef, useState} from 'react';
+import React, { forwardRef, useState } from 'react';
 import {
   View,
   Text,
@@ -8,15 +8,15 @@ import {
   Dimensions,
   ImageBackground,
 } from 'react-native';
-import BottomSheet from '@gorhom/bottom-sheet';
-import {HP, WP} from '../../utility/ResponsiveSize';
-import {Colors, Images} from '../../assets';
+import BottomSheet, { BottomSheetModal } from '@gorhom/bottom-sheet';
+import { HP, WP } from '../../utility/ResponsiveSize';
+import { Colors, Images } from '../../assets';
 import * as Progress from 'react-native-progress';
 import Carousel from 'react-native-reanimated-carousel'; // Import the Carousel component
 
 const CustomBottomSheet = forwardRef(
   (
-    {snapPoints, handlePressEndSession, isImageSlideOpen, setImageSliderOpen},
+    { snapPoints, handlePressEndSession, isImageSlideOpen, setImageSliderOpen },
     ref,
   ) => {
     const [progress, setProgress] = useState(0.3);
@@ -73,7 +73,7 @@ const CustomBottomSheet = forwardRef(
       }
     };
     return (
-      <BottomSheet ref={ref} snapPoints={snapPoints}>
+      <BottomSheetModal ref={ref} snapPoints={snapPoints} index={0} >
         <View
           style={{
             alignItems: 'center',
@@ -83,7 +83,7 @@ const CustomBottomSheet = forwardRef(
           }}>
           {isImageSlideOpen === true ? (
             <>
-              <View style={{justifyContent: 'center', alignItems: 'center'}}>
+              <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                 <Text
                   style={{
                     marginVertical: HP(2),
@@ -97,7 +97,7 @@ const CustomBottomSheet = forwardRef(
                 <Text>7 exercises, 3 sets, 8 reps</Text>
               </View>
               {/* Use here the progress bar */}
-              <View style={{marginTop: HP(3)}}>
+              <View style={{ marginTop: HP(3) }}>
                 <Progress.Bar
                   progress={progress}
                   width={300}
@@ -110,7 +110,7 @@ const CustomBottomSheet = forwardRef(
                   useNativeDriver={true}
                 />
               </View>
-              <View style={{flex: 1}}>
+              <View style={{ flex: 1 }}>
                 {/* Use the Carousel component here */}
                 <Carousel
                   width={300}
@@ -133,14 +133,14 @@ const CustomBottomSheet = forwardRef(
                     setProgress(newProgress); // Update the progress state
                   }}
                   data={images}
-                  renderItem={({item}) => (
+                  renderItem={({ item }) => (
                     <View
                       style={{
                         flex: 1,
                         justifyContent: 'center',
                       }}>
                       <ImageBackground
-                        source={{uri: item.url}}
+                        source={{ uri: item.url }}
                         borderRadius={20}
                         style={{
                           width: 300,
@@ -163,7 +163,7 @@ const CustomBottomSheet = forwardRef(
                           <Image
                             source={Images.PLAYFILLED}
                             tintColor={Colors.white}
-                            style={{height: 40, width: 40, resizeMode: 'cover'}}
+                            style={{ height: 40, width: 40, resizeMode: 'cover' }}
                           />
                         </ImageBackground>
                         <View
@@ -221,7 +221,7 @@ const CustomBottomSheet = forwardRef(
             </>
           ) : (
             <>
-              <View style={{justifyContent: 'center', alignItems: 'center'}}>
+              <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                 <Text
                   style={{
                     marginVertical: HP(3),
@@ -232,7 +232,7 @@ const CustomBottomSheet = forwardRef(
                   }}>
                   You're on a roll!
                 </Text>
-                <View style={{alignItems: 'center', justifyContent: 'center'}}>
+                <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                   <Text
                     style={{
                       width: '70%',
@@ -250,7 +250,7 @@ const CustomBottomSheet = forwardRef(
               <View>
                 <Image
                   source={Images.YOGAGIRL}
-                  style={{height: 200, width: 200, resizeMode: 'contain'}}
+                  style={{ height: 200, width: 200, resizeMode: 'contain' }}
                 />
               </View>
               <TouchableOpacity
@@ -297,7 +297,7 @@ const CustomBottomSheet = forwardRef(
             </View>
           </View>
         </View>
-      </BottomSheet>
+      </BottomSheetModal>
     );
   },
 );
