@@ -1,10 +1,10 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {View, Text, Image, StyleSheet, Animated} from 'react-native';
-import {Colors, Images} from '../../../assets';
-import {HP, WP} from '../../../utility/ResponsiveSize';
+import React, { useState, useEffect, useRef } from 'react';
+import { View, Text, Image, StyleSheet, Animated } from 'react-native';
+import { Colors, Images } from '../../../assets';
+import { HP, WP } from '../../../utility/ResponsiveSize';
 // import {Svg, Circle} from 'react-native-svg';
 // import LinearGradient from 'react-native-linear-gradient';
-import {AnimatedCircularProgress} from 'react-native-circular-progress';
+import { AnimatedCircularProgress } from 'react-native-circular-progress';
 
 const CaloriesTracker = () => {
   const [fillValue] = useState(new Animated.Value(10));
@@ -23,7 +23,7 @@ const CaloriesTracker = () => {
 
   return (
     <View style={styles.container}>
-      <View style={[styles.containerbar, {marginBottom: HP(10)}]}>
+      <View style={[styles.containerbar, { marginBottom: HP(3) }]}>
         <Text style={styles.title}>Calories Tracker</Text>
         <AnimatedCircularProgress
           ref={circularProgressRef}
@@ -31,14 +31,14 @@ const CaloriesTracker = () => {
           width={25}
           fill={0}
           lineCap="round"
-          style={{transform: [{rotate: '180deg'}]}}
+          style={{ transform: [{ rotate: '180deg' }] }}
           arcSweepAngle={180}
           tintColor={Colors.primary}
           onAnimationComplete={() => console.log('onAnimationComplete')}
           backgroundColor="rgb(99,88,85)"
           padding={0}
-          dashedBackground={{width: 5, gap: 5}}
-          dashedTint={{width: 5, gap: 5}}
+          dashedBackground={{ width: 5, gap: 5 }}
+          dashedTint={{ width: 5, gap: 5 }}
           duration={1000}
           children={fill => (
             <>
@@ -47,7 +47,7 @@ const CaloriesTracker = () => {
                   styles.fillContainer,
                   {
                     transform: [
-                      {rotate: '180deg'},
+                      { rotate: '180deg' },
                       {
                         translateY: fillValue.interpolate({
                           inputRange: [0, 100],
@@ -70,7 +70,7 @@ const CaloriesTracker = () => {
             justifyContent: 'center',
             alignItems: 'center',
           }}
-          renderCap={({center}) => <></>}
+          renderCap={({ center }) => <></>}
         />
         <View style={styles.infoContainer}>
           <Text style={styles.caloriesText}>1023 Calories</Text>
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: Colors.cardclr,
     borderRadius: WP(5),
-    height: HP(30),
+    // height: HP(30),
   },
   title: {
     color: Colors.white,
@@ -107,6 +107,8 @@ const styles = StyleSheet.create({
     width: 30,
     height: 200,
     resizeMode: 'cover',
+    transform: [
+      { rotate: '-25deg' },]
   },
   fillText: {
     fontSize: 18,

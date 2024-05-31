@@ -9,22 +9,27 @@ import {
   FlatList,
 } from 'react-native';
 // import { Sound } from 'react-native-sound';
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import CustomizeHeader from '../../../components/CustomizeHeader';
-import {Colors, Images, data} from '../../../assets';
-import {WP, HP} from '../../../utility/ResponsiveSize';
+import { Colors, Images, data } from '../../../assets';
+import { WP, HP } from '../../../utility/ResponsiveSize';
 import CustomHeading from '../../../components/CustomHeading';
 import dings from '../../../assets/audios/audio11.mp3';
+import dings2 from '../../../assets/audios/audio12.mp3';
 import LottieView from 'lottie-react-native';
 import Animations from '../../../assets/animations/Animations';
-import {styles} from './styles';
+import { styles } from './styles';
+import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
+import { duration } from 'moment';
 let Sound = require('react-native-sound');
 const SoundCustom = () => {
   const [playing, setPlaying] = useState(false);
-  const [selected, setSelected] = useState(dings);
+  const [playingAlready, setPlayingAlredy] = useState(false);
+
+  const [selectedmusic, setSelectedmusic] = useState(dings);
 
   Sound.setCategory('Playback');
-  var audio = new Sound(selected, null, error => {
+  var audio = new Sound(selectedmusic, null, error => {
     if (error) {
       console.log('failed to load the sound', error);
       return;
@@ -32,15 +37,15 @@ const SoundCustom = () => {
   });
 
   const files = [
-    {id: '1', file: dings, time: '3:00'},
-    {id: '2', file: dings, time: '2:30'},
-    {id: '3', file: dings, time: '1:70'},
-    {id: '4', file: dings, time: '4:00'},
-    {id: '5', file: dings, time: '3:00'},
-    {id: '6', file: dings, time: '5:00'},
-    {id: '7', file: dings, time: '9:08'},
-    {id: '8', file: dings, time: '1:00'},
-    {id: '9', file: dings, time: '2:00'},
+    { id: '1', file: dings, name: "File 1", time: '3:00' },
+    { id: '2', file: dings, name: "File 2", time: '2:30' },
+    { id: '3', file: dings, name: "File 3", time: '1:70' },
+    { id: '4', file: dings, name: "File 4", time: '4:00' },
+    { id: '5', file: dings, name: "File 5", time: '3:00' },
+    { id: '6', file: dings, name: "File 6", time: '5:00' },
+    { id: '7', file: dings, name: "File 7", time: '9:08' },
+    { id: '8', file: dings, name: "File 8", time: '1:00' },
+    { id: '9', file: dings, name: "File 9", time: '2:00' },
   ];
 
   useEffect(() => {
@@ -56,6 +61,7 @@ const SoundCustom = () => {
       setPlaying(false);
     } else {
       audio.play(success => {
+
         if (success) {
           setPlaying(false);
           console.log('successfully finished playing');
@@ -70,7 +76,7 @@ const SoundCustom = () => {
 
   const [selectedItem, setSelectedText] = useState('Imported music');
 
-  const renderItem = ({item}) => (
+  const renderItem = ({ item }) => (
     <TouchableOpacity
       style={{
         width: '100%',
@@ -83,15 +89,22 @@ const SoundCustom = () => {
       }}
       // onPress={() => setSelected(item.file)}>
       onPress={() => {
-        setSelected(item.file);
+
+        setSelectedmusic(item.file);
+
+        if (playing) {
+          playPause();
+        }
+
+
         setPlaying(true);
       }}>
-      <View style={{flexDirection: 'row'}}>
-        <Text style={{color: Colors.white, fontSize: 15, padding: 18}}>
+      <View style={{ flexDirection: 'row' }}>
+        <Text style={{ color: Colors.white, fontSize: 15, padding: 18 }}>
           {item.time}
         </Text>
-        <Text style={{color: Colors.white, fontSize: 15, padding: 18}}>
-          {item.file}
+        <Text style={{ color: Colors.white, fontSize: 15, padding: 18 }}>
+          {item.name}
         </Text>
       </View>
       <View>
@@ -154,7 +167,7 @@ const SoundCustom = () => {
               borderRadius: 20,
               alignSelf: 'center',
               flexDirection: 'row',
-              justifyContent: 'space-between',
+              // justifyContent: 'space-between',
               alignItems: 'center',
             }}>
             <View
@@ -177,14 +190,16 @@ const SoundCustom = () => {
               <Text
                 style={{
                   color: Colors.white,
-                  alignItems: 'flex-start',
-                  alignSelf: 'flex-start',
-                  justifyContent: 'flex-start',
+                  // alignItems: 'flex-start',
+                  // alignSelf: 'flex-start',
+                  // justifyContent: 'flex-start'
+                  width: "100%",
+                  left: 10
                 }}>
-                {selected}
+                {selectedmusic}
               </Text>
             </View>
-            <TouchableOpacity onPress={() => setPlaying(!playing)}>
+            <TouchableOpacity style={{ position: "absolute", right: 10 }} onPress={() => setPlaying(!playing)}>
               <Image
                 source={playing == false ? Images.BELL : Images.PLAYFILLED}
                 style={{
@@ -216,7 +231,7 @@ const SoundCustom = () => {
           />
         </View>
       ) : (
-        <View style={styles.connectAppsContainer}>
+        <Animated.View entering={FadeIn.duration(1000)} exiting={FadeOut.duration(1000)} style={styles.connectAppsContainer}>
           <Text style={styles.connectAppsText}>Connect your apps</Text>
           <View style={styles.connectAppsInnerContainer}>
             <TouchableOpacity style={styles.musicCard}>
@@ -237,7 +252,7 @@ const SoundCustom = () => {
               />
             </TouchableOpacity>
           </View>
-        </View>
+        </Animated.View>
       )}
     </View>
   );

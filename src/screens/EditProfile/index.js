@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
-import {View, Text, Image, TouchableOpacity, Pressable} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {styles} from './styles';
-import {Colors, Images} from '../../assets';
-import {Switch} from 'react-native-switch';
+import React, { useState } from 'react';
+import { View, Text, Image, TouchableOpacity, Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { styles } from './styles';
+import { Colors, Images } from '../../assets';
+import { Switch } from 'react-native-switch';
 import Routes from '../../navigation/Routes';
 
 const EditProfile = () => {
@@ -44,7 +44,7 @@ const EditProfile = () => {
           />
         </Pressable>
 
-        <Pressable style={styles.row} onPress={() => {}}>
+        <Pressable style={styles.row} onPress={() => { }}>
           <Text style={styles.rowText}>Data privacy</Text>
           <Image
             source={Images.RIGHTARROW}
@@ -53,7 +53,7 @@ const EditProfile = () => {
           />
         </Pressable>
 
-        <Pressable style={styles.row} onPress={() => {}}>
+        <Pressable style={styles.row} onPress={() => { }}>
           <Text style={styles.rowText}>Data Saver</Text>
           <View style={styles.switchContainer}>
             <Switch

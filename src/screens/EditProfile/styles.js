@@ -1,6 +1,6 @@
-import {StyleSheet, Platform} from 'react-native';
-import {HP, WP} from '../../utility/ResponsiveSize';
-import {Colors} from '../../assets';
+import { StyleSheet, Platform } from 'react-native';
+import { HP, WP } from '../../utility/ResponsiveSize';
+import { Colors } from '../../assets';
 
 export const styles = StyleSheet.create({
   container: {
@@ -39,7 +39,7 @@ export const styles = StyleSheet.create({
   },
   headerText: {
     color: Colors.white,
-    fontSize: 30,
+    fontSize: 20, fontFamily: "SFProText-Bold"
   },
   row: {
     flexDirection: 'row',

@@ -1,11 +1,11 @@
-import {StyleSheet, StatusBar, View, Text} from 'react-native';
-import React, {useEffect} from 'react';
+import { StyleSheet, StatusBar, View, Text } from 'react-native';
+import React, { useEffect } from 'react';
 import LottieView from 'lottie-react-native';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import Routes from '../../navigation/Routes';
 import Animations from '../../assets/animations/Animations';
-import {Colors} from '../../assets';
-import {WP, HP} from '../../utility/ResponsiveSize';
+import { Colors } from '../../assets';
+import { WP, HP } from '../../utility/ResponsiveSize';
 
 const Splash = () => {
   const navigation = useNavigation();
@@ -16,7 +16,7 @@ const Splash = () => {
     // Navigate to SPREADCLR after 3 seconds
     setTimeout(() => {
       navigation.replace(Routes.SPREADCLR);
-    }, 3000);
+    }, 3500);
 
     return () => {
       StatusBar.setHidden(false);
@@ -31,7 +31,7 @@ const Splash = () => {
         resizeMode="cover"
         style={styles.lottieView}
       />
-      <Text style={[styles.text, {marginTop: HP(5)}]}>
+      <Text style={[styles.text, { marginTop: HP(5) }]}>
         Look in mirror, that's your competition
       </Text>
       <Text style={styles.text}>-john Assaraf</Text>

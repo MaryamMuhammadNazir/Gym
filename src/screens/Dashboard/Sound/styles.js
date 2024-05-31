@@ -1,6 +1,6 @@
-import {Platform, StyleSheet} from 'react-native';
-import {HP, WP} from '../../../utility/ResponsiveSize';
-import {Colors} from '../../../assets';
+import { Platform, StyleSheet } from 'react-native';
+import { HP, WP } from '../../../utility/ResponsiveSize';
+import { Colors } from '../../../assets';
 
 export const styles = StyleSheet.create({
   container: {
@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     paddingBottom: HP(3),
   },
   btnView: {
-    width: '60%',
+    width: '70%',
     flexDirection: 'row',
     borderRadius: HP(1),
     backgroundColor: Colors.cardclr,
@@ -30,14 +30,14 @@ export const styles = StyleSheet.create({
   },
   item: {
     padding: HP(1),
-    paddingLeft: 0,
+    justifyContent: "center", alignItems: "center", alignSelf: "center", marginHorizontal: HP(0.5)
   },
   itemText: {
     color: Colors.white,
     padding: WP(0.25),
   },
   importedMusic: {
-    flex: 1,
+    flex: 1, justifyContent: "center"
   },
   connectAppsContainer: {
     flex: 1,
@@ -70,7 +70,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  ytMusicTxt: {color: Colors.white, fontSize: HP(1.5), marginTop: HP(1)},
+  ytMusicTxt: { color: Colors.white, fontSize: HP(1.5), marginTop: HP(1) },
   playButtonImage: {
     height: 40,
     width: 40,

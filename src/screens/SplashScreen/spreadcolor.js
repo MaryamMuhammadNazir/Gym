@@ -1,9 +1,9 @@
-import React, {useEffect, useRef} from 'react';
-import {View, StyleSheet, Animated, Easing, StatusBar} from 'react-native';
-import {Colors} from '../../assets';
-import {useNavigation} from '@react-navigation/native';
+import React, { useEffect, useRef } from 'react';
+import { View, StyleSheet, Animated, Easing, StatusBar } from 'react-native';
+import { Colors } from '../../assets';
+import { useNavigation } from '@react-navigation/native';
 import Routes from '../../navigation/Routes';
-import {HP, WP} from '../../utility/ResponsiveSize';
+import { HP, WP } from '../../utility/ResponsiveSize';
 
 const SpreadColorScreen = () => {
   const navigation = useNavigation();
@@ -14,7 +14,7 @@ const SpreadColorScreen = () => {
 
     Animated.timing(animation, {
       toValue: 1,
-      duration: 3000,
+      duration: 500,
       easing: Easing.linear,
       useNativeDriver: false,
     }).start(() => {
@@ -35,7 +35,7 @@ const SpreadColorScreen = () => {
 
   const scale = animation.interpolate({
     inputRange: [0, 1],
-    outputRange: [0, 100], // Adjusted to a large enough value to cover the screen
+    outputRange: [0.01, 200],  // Adjusted to a large enough value to cover the screen
   });
 
   return (
@@ -45,7 +45,7 @@ const SpreadColorScreen = () => {
           styles.animatedView,
           {
             backgroundColor,
-            transform: [{scale}],
+            transform: [{ scale }],
           },
         ]}
       />

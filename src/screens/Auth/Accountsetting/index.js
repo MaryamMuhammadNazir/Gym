@@ -7,11 +7,11 @@ import {
   KeyboardAvoidingView,
   Animated,
 } from 'react-native';
-import React, {useState, useEffect} from 'react';
-import {styles} from './styles';
-import {Colors, Images} from '../../../assets';
-import {useNavigation} from '@react-navigation/native';
-import {HP, WP} from '../../../utility/ResponsiveSize';
+import React, { useState, useEffect } from 'react';
+import { styles } from './styles';
+import { Colors, Images } from '../../../assets';
+import { useNavigation } from '@react-navigation/native';
+import { HP, WP } from '../../../utility/ResponsiveSize';
 
 const Accountsetting = () => {
   const navigation = useNavigation();
@@ -19,27 +19,11 @@ const Accountsetting = () => {
   const [sname, setsname] = useState('John');
   const [email, setemail] = useState('yanajohn@gmail.com');
   const animation = useState(new Animated.Value(0))[0];
-  useEffect(() => {
-    Animated.timing(animation, {
-      toValue: 1,
-      duration: 1000,
-      useNativeDriver: true,
-    }).start();
-  }, [animation]);
 
-  const animatedStyle = {
-    // opacity: animation,
-    transform: [
-      {
-        translateY: animation.interpolate({
-          inputRange: [0.5, 1],
-          outputRange: [20, 0], // Starts 50 units below and moves to its original position
-        }),
-      },
-    ],
-  };
+
+
   return (
-    <Animated.View style={[styles.container, animatedStyle]}>
+    <Animated.View style={[styles.container,]}>
       <View style={styles.contentContainer}>
         {/* Profile header */}
         <View style={styles.header}>
@@ -128,7 +112,7 @@ const Accountsetting = () => {
               <Image
                 source={Images.CLOSE}
                 tintColor={Colors.white}
-                style={{height: 25, width: 25, resizeMode: 'cover'}}
+                style={{ height: 25, width: 25, resizeMode: 'cover' }}
               />
             </View>
             <View
@@ -156,7 +140,7 @@ const Accountsetting = () => {
               <Image
                 source={Images.CLOSE}
                 tintColor={Colors.white}
-                style={{height: 25, width: 25, resizeMode: 'cover'}}
+                style={{ height: 25, width: 25, resizeMode: 'cover' }}
               />
             </View>
             <View
@@ -184,7 +168,7 @@ const Accountsetting = () => {
               <Image
                 source={Images.CLOSE}
                 tintColor={Colors.white}
-                style={{height: 25, width: 25, resizeMode: 'cover'}}
+                style={{ height: 25, width: 25, resizeMode: 'cover' }}
               />
             </View>
             <View
@@ -196,12 +180,12 @@ const Accountsetting = () => {
                 borderRadius: 20,
                 // justifyContent: 'center',
               }}>
-              <View style={{height: 100, width: 100}}>
+              <View style={{ height: 100, width: 100 }}>
                 <Image
                   source={Images.MAP}
                   borderTopLeftRadius={20}
                   borderBottomLeftRadius={20}
-                  style={{height: '100%', width: '100%', resizeMode: 'contain'}}
+                  style={{ height: '100%', width: '100%', resizeMode: 'contain' }}
                 />
               </View>
               <View
@@ -211,13 +195,13 @@ const Accountsetting = () => {
                   height: 100,
                   alignItems: 'flex-start',
                 }}>
-                <Text style={{fontSize: 16, color: Colors.white}}>
+                <Text style={{ fontSize: 16, color: Colors.white }}>
                   Payment Plan
                 </Text>
-                <Text style={{fontSize: 16, color: Colors.white}}>
+                <Text style={{ fontSize: 16, color: Colors.white }}>
                   Standard plan
                 </Text>
-                <Text style={{fontSize: 16, color: Colors.primary}}>
+                <Text style={{ fontSize: 16, color: Colors.primary }}>
                   Tap to charge plan
                 </Text>
               </View>
