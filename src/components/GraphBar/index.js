@@ -47,14 +47,27 @@ const GraphBar = ({value, day, colorrr}) => {
         <View style={styles.container2}>
           {/* Animated bar */}
           <Animated.View style={[styles.bar2, animatedStyle2]}>
-            <Text style={{color: Colors.white, fontSize: 12}}>
+            <Text
+              style={{
+                color: Colors.white,
+                fontSize: 12,
+                fontFamily: 'SFProText-Regular',
+              }}>
               {`+` + value}
             </Text>
           </Animated.View>
         </View>
       </View>
       <Image source={Images.SECURE} style={styles.img} tintColor={colorrr} />
-      <Text style={{color: Colors.white}}>{day}</Text>
+      <Text
+        style={{
+          color: Colors.white,
+          fontFamily: 'SFProText-Regular',
+          fontSize: 10,
+          alignItems: 'center',
+        }}>
+        {day}
+      </Text>
     </View>
   );
 };

@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginHorizontal: 5,
     color: Colors.white,
+    fontFamily: 'SFProText-Regular',
   },
   icon: {
     tintColor: Colors.white,

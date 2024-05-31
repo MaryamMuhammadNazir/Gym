@@ -7,6 +7,7 @@ import {
   Text,
   Button,
   FlatList,
+
 } from 'react-native';
 // import { Sound } from 'react-native-sound';
 import React, { useState, useEffect } from 'react';
@@ -17,6 +18,7 @@ import CustomHeading from '../../../components/CustomHeading';
 import dings from '../../../assets/audios/audio11.mp3';
 import dings2 from '../../../assets/audios/audio12.mp3';
 import LottieView from 'lottie-react-native';
+import { FadeIn, FadeOut } from 'react-native-reanimated';
 import Animations from '../../../assets/animations/Animations';
 import { styles } from './styles';
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
@@ -73,7 +75,16 @@ const SoundCustom = () => {
       setPlaying(true);
     }
   };
-
+  const handlePlayPause = (file, data) => {
+    if (playing && file === selected) {
+      audio.pause();
+      setPlaying(false);
+    } else {
+      setSelected(file);
+      setSongName(data);
+      playPause(file);
+    }
+  };
   const [selectedItem, setSelectedText] = useState('Imported music');
 
   const renderItem = ({ item }) => (
@@ -86,6 +97,7 @@ const SoundCustom = () => {
         alignItems: 'center',
         borderColor: Colors.white,
         justifyContent: 'space-between',
+        // marginVertical: HP(4),
       }}
       // onPress={() => setSelected(item.file)}>
       onPress={() => {
@@ -147,7 +159,7 @@ const SoundCustom = () => {
         ))}
       </View>
       {selectedItem === 'Imported music' ? (
-        <View style={styles.importedMusic}>
+        <Animated.View entering={FadeIn} style={styles.importedMusic}>
           <View>
             <Text
               style={{
@@ -229,7 +241,7 @@ const SoundCustom = () => {
             renderItem={renderItem}
             keyExtractor={item => item.id}
           />
-        </View>
+        </Animated.View>
       ) : (
         <Animated.View entering={FadeIn.duration(1000)} exiting={FadeOut.duration(1000)} style={styles.connectAppsContainer}>
           <Text style={styles.connectAppsText}>Connect your apps</Text>

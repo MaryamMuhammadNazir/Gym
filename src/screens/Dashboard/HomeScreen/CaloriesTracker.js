@@ -51,7 +51,7 @@ const CaloriesTracker = () => {
                       {
                         translateY: fillValue.interpolate({
                           inputRange: [0, 100],
-                          outputRange: [0, -200],
+                          outputRange: [0, 100],
                         }),
                       },
                     ],
@@ -86,6 +86,8 @@ export default CaloriesTracker;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
+    marginBottom: HP(5),
   },
   containerbar: {
     justifyContent: 'center',
@@ -97,8 +99,8 @@ const styles = StyleSheet.create({
   title: {
     color: Colors.white,
     fontSize: 20,
-    alignSelf: 'flex-start',
-    padding: HP(1),
+    padding: 10,
+    margin: 10,
   },
   fillContainer: {
     alignItems: 'center',
@@ -121,10 +123,10 @@ const styles = StyleSheet.create({
   },
   caloriesText: {
     color: Colors.white,
-    fontSize: 30,
+    fontSize: 17,
   },
   weekText: {
     color: Colors.white,
-    fontSize: 20,
+    fontSize: 12,
   },
 });

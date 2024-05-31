@@ -19,6 +19,7 @@ export const styles = StyleSheet.create({
     borderRadius: WP(2),
     marginHorizontal: WP(2),
     padding: HP(1),
+    fontFamily: 'SFProText-Regular',
   },
   itemText: {
     color: Colors.white,
@@ -58,6 +59,7 @@ export const styles = StyleSheet.create({
     color: Colors.white,
     fontSize: HP(3),
     paddingVertical: HP(2),
+    fontFamily: 'SFPro-Semibold',
   },
   videoInfoContainer: {
     position: 'absolute',
@@ -72,6 +74,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: HP(1.5),
     borderRadius: HP(1),
     alignSelf: 'center',
+    fontFamily: 'SFProText-Regular',
   },
   playIcon: {
     height: 30,
@@ -83,6 +86,7 @@ export const styles = StyleSheet.create({
     paddingTop: 5,
     fontSize: HP(1.75),
     left: HP(2),
+    fontFamily: 'SFProText-Regular',
   },
   modalContainer: {
     flex: 1,
@@ -98,7 +102,7 @@ export const styles = StyleSheet.create({
   },
   video: {
     width: '100%',
-    height: HP(30),
+    height: HP(70),
   },
   closeButton: {
     // marginTop: 20,
@@ -106,8 +110,8 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     borderRadius: 50,
     alignItems: 'center',
-    height: 50,
-    width: 50,
+    height: 40,
+    width: 40,
     justifyContent: 'center',
     position: 'absolute',
     top: HP(5),

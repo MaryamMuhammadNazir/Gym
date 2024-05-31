@@ -39,7 +39,7 @@ export const styles = StyleSheet.create({
   },
   headerText: {
     color: Colors.white,
-    fontSize: 20, fontFamily: "SFProText-Bold"
+    ontSize: 20, fontFamily: "SFProText-Bold"
   },
   row: {
     flexDirection: 'row',
@@ -52,8 +52,9 @@ export const styles = StyleSheet.create({
   },
   rowText: {
     color: Colors.white,
-    fontSize: 20,
+    fontSize: 18,
     paddingHorizontal: HP(1),
+    fontFamily: 'SFPro-Semibold',
   },
   rowImage: {
     height: 20,
@@ -68,7 +69,5 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  switchStyle: {
-    marginHorizontal: HP(1),
-  },
+  switchStyle: {},
 });

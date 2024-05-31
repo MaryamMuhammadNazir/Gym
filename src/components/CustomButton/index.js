@@ -16,7 +16,7 @@ export default Button;
 const styles = StyleSheet.create({
   button: {
     backgroundColor: Colors.primary,
-    paddingVertical: HP(1), // Example: 2% of screen height
+    paddingVertical: HP(1.5), // Example: 2% of screen height
     paddingHorizontal: WP(5), // Example: 5% of screen width
     borderRadius: WP(2), // Example: 2% of screen width for border radius
     alignItems: 'center',
@@ -25,7 +25,8 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#FFFFFF',
-    fontSize: WP(4), // Example: 4% of screen width for font size
-    fontWeight: 'bold',
+    fontSize: WP(3.7), // Example: 4% of screen width for font size
+    // fontWeight: 'bold',
+    fontFamily: 'SFProText-Bold',
   },
 });

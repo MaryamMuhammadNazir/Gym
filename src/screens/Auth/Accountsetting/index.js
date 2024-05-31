@@ -178,7 +178,8 @@ const Accountsetting = () => {
                 marginTop: HP(1.2),
                 backgroundColor: Colors.cardclr,
                 borderRadius: 20,
-                // justifyContent: 'center',
+                width: '95%',
+                alignSelf: 'center',
               }}>
               <View style={{ height: 100, width: 100 }}>
                 <Image

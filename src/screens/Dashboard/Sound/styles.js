@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.cardclr,
     overflow: 'hidden',
     flexWrap: 'wrap',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     alignContent: 'center',
     marginLeft: HP(2),
   },
@@ -35,6 +35,9 @@ export const styles = StyleSheet.create({
   itemText: {
     color: Colors.white,
     padding: WP(0.25),
+    alignSelf: 'center',
+    alignItems: 'center',
+    fontFamily: 'SFProText-Regular',
   },
   importedMusic: {
     flex: 1, justifyContent: "center"
@@ -46,7 +49,9 @@ export const styles = StyleSheet.create({
   },
   connectAppsText: {
     color: 'white',
-    fontSize: HP(3),
+    fontSize: HP(2),
+
+    fontFamily: 'SFPro-Semibold',
   },
   connectAppsInnerContainer: {
     flexDirection: 'row',
