@@ -1,4 +1,4 @@
-import React, { forwardRef, useState, useRef, useEffect } from 'react';
+import React, {forwardRef, useState, useRef, useEffect} from 'react';
 import {
   View,
   Text,
@@ -7,24 +7,28 @@ import {
   Easing,
   Dimensions,
   ImageBackground,
-  Animated,
 } from 'react-native';
-import BottomSheet, { BottomSheetModal } from '@gorhom/bottom-sheet';
-import { HP, WP } from '../../utility/ResponsiveSize';
-import { Colors, Images } from '../../assets';
+import BottomSheet, {BottomSheetModal} from '@gorhom/bottom-sheet';
+import {HP, WP} from '../../utility/ResponsiveSize';
+import {Colors, Images} from '../../assets';
 import * as Progress from 'react-native-progress';
 import Carousel from 'react-native-reanimated-carousel'; // Import the Carousel component
-import { useIsFocused } from '@react-navigation/native';
-import Animated, { FadeIn, FadeInDown, FadeInRight, FadeInUp, FadeOut } from 'react-native-reanimated';
+import {useIsFocused} from '@react-navigation/native';
+import Animated, {
+  FadeIn,
+  FadeInDown,
+  FadeInRight,
+  FadeInUp,
+  FadeOut,
+} from 'react-native-reanimated';
 const CustomBottomSheet = forwardRef(
-
   (
-    { snapPoints, handlePressEndSession, isImageSlideOpen, setImageSliderOpen },
+    {snapPoints, handlePressEndSession, isImageSlideOpen, setImageSliderOpen},
     ref,
   ) => {
     const [progress, setProgress] = useState(0.1);
     const width = Dimensions.get('window').width;
-    const isFocus = useIsFocused()
+    const isFocus = useIsFocused();
     const [images, setImages] = React.useState([
       {
         id: 0,
@@ -88,21 +92,17 @@ const CustomBottomSheet = forwardRef(
           }}>
           {isImageSlideOpen === true ? (
             // Animated image slider view
-            <Animated.View
+            <View
               style={[
                 {
                   alignItems: 'center',
                   justifyContent: 'center',
-                  transform: [
-                    { translateX: slideAnim.x },
-                    { translateY: slideAnim.y },
-                    { scale: scaleAnim },
-                  ],
                 },
               ]}>
               {/* top view */}
-              <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                <Text
+              <View style={{justifyContent: 'center', alignItems: 'center'}}>
+                <Animated.Text
+                  entering={FadeInDown.duration(1000)}
                   style={{
                     marginVertical: HP(1),
                     fontSize: HP(3),
@@ -111,8 +111,9 @@ const CustomBottomSheet = forwardRef(
                     alignSelf: 'center',
                   }}>
                   Today's routine for you
-                </Text>
-                <Text
+                </Animated.Text>
+                <Animated.Text
+                  entering={FadeInDown.duration(1000)}
                   style={{
                     fontSize: HP(1.5),
                     color: Colors.black,
@@ -120,11 +121,11 @@ const CustomBottomSheet = forwardRef(
                     alignSelf: 'center',
                   }}>
                   7 exercises, 3 sets, 8 reps
-                </Text>
+                </Animated.Text>
               </View>
 
-              <View style={{ flex: 0.87 }}>
-                <View style={{ marginTop: HP(3) }}>
+              <View style={{flex: 0.87}}>
+                <View style={{marginTop: HP(3)}}>
                   <Progress.Bar
                     progress={progress}
                     width={300}
@@ -137,7 +138,7 @@ const CustomBottomSheet = forwardRef(
                     useNativeDriver={true}
                   />
                 </View>
-                <View style={{}}>
+                <Animated.View entering={FadeIn.duration(1000)} style={{}}>
                   {/* Use the Carousel component here */}
                   <Carousel
                     width={300}
@@ -159,14 +160,14 @@ const CustomBottomSheet = forwardRef(
                       setProgress(newProgress); // Update the progress state
                     }}
                     data={images}
-                    renderItem={({ item }) => (
+                    renderItem={({item}) => (
                       <View
                         style={{
                           flex: 1,
                           justifyContent: 'center',
                         }}>
                         <ImageBackground
-                          source={{ uri: item.url }}
+                          source={{uri: item.url}}
                           borderRadius={20}
                           style={{
                             width: 300,
@@ -246,22 +247,23 @@ const CustomBottomSheet = forwardRef(
                       </View>
                     )}
                   />
-                </View>
+                </Animated.View>
               </View>
-              <Text style={{ color: Colors.tabbgclr, fontSize: HP(1.7) }}>
+              <Text style={{color: Colors.tabbgclr, fontSize: HP(1.7)}}>
                 Swipe when done to view next
               </Text>
-            </Animated.View>
+            </View>
           ) : (
             // apply different animation
-            <Animated.View
+            <View
               style={{
                 flex: 1,
                 alignItems: 'center',
                 justifyContent: 'space-evenly',
               }}>
-              <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                <Text
+              <View style={{justifyContent: 'center', alignItems: 'center'}}>
+                <Animated.Text
+                  entering={FadeInUp.duration(1000)}
                   style={{
                     marginVertical: HP(2.5),
                     fontSize: HP(3),
@@ -270,9 +272,10 @@ const CustomBottomSheet = forwardRef(
                     alignSelf: 'center',
                   }}>
                   You're on a roll!
-                </Text>
-                <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                </Animated.Text>
+                <View style={{alignItems: 'center', justifyContent: 'center'}}>
                   <Animated.Text
+                    entering={FadeInUp.duration(1000)}
                     style={{
                       width: '70%',
                       alignSelf: 'center',
@@ -290,7 +293,7 @@ const CustomBottomSheet = forwardRef(
               <View>
                 <Image
                   source={Images.YOGAGIRL}
-                  style={{ height: 200, width: 200, resizeMode: 'contain' }}
+                  style={{height: 200, width: 200, resizeMode: 'contain'}}
                 />
               </View>
               <TouchableOpacity
@@ -313,7 +316,7 @@ const CustomBottomSheet = forwardRef(
                   Continue session
                 </Text>
               </TouchableOpacity>
-            </Animated.View>
+            </View>
           )}
 
           <View

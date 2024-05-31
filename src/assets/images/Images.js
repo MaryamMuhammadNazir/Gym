@@ -24,6 +24,8 @@ const Images = {
   EMPTY: require('./empty.png'),
   MUSIC: require('./musicIcon.jpeg'),
   NEEDLE: require('./needle.png'),
+  ARROWBACK: require('./arrowback.png'),
+  PUASE: require('./puase.png'),
 };
 
 export default Images;

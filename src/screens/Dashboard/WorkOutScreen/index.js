@@ -153,8 +153,9 @@ const Workout = () => {
             style={styles.closeButton}
             onPress={() => setModalVisible(false)}>
             <Image
-              source={Images.CLOSE}
-              style={{height: 40, width: 40, resizeMode: 'cover'}}
+              source={Images.ARROWBACK}
+              style={{height: 30, width: 30, resizeMode: 'cover'}}
+              tintColor={Colors.white}
             />
           </TouchableOpacity>
         </View>

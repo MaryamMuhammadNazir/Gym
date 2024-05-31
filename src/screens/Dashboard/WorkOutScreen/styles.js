@@ -107,7 +107,7 @@ export const styles = StyleSheet.create({
   closeButton: {
     // marginTop: 20,
     // padding: 10,
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.tabbgclr,
     borderRadius: 50,
     alignItems: 'center',
     height: 40,
@@ -115,7 +115,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     position: 'absolute',
     top: HP(5),
-    right: HP(2.5),
+    left: HP(2.5),
   },
   closeButtonText: {
     color: Colors.white,
