@@ -100,29 +100,32 @@ const CustomBottomSheet = forwardRef(
                 },
               ]}>
               {/* top view */}
-              <View style={{justifyContent: 'center', alignItems: 'center'}}>
-                <Animated.Text
-                  entering={FadeInDown.duration(1000)}
+              <Animated.View
+                entering={FadeInDown.duration(1000)}
+                exiting={FadeOut.duration(1000)}
+                style={{justifyContent: 'center', alignItems: 'center'}}>
+                <Text
                   style={{
                     marginVertical: HP(1),
                     fontSize: HP(3),
                     color: Colors.black,
                     fontWeight: 'bold',
                     alignSelf: 'center',
+                    color: 'black',
                   }}>
                   Today's routine for you
-                </Animated.Text>
-                <Animated.Text
-                  entering={FadeInDown.duration(1000)}
+                </Text>
+                <Text
                   style={{
                     fontSize: HP(1.5),
                     color: Colors.black,
                     fontWeight: '700',
                     alignSelf: 'center',
+                    color: 'black',
                   }}>
                   7 exercises, 3 sets, 8 reps
-                </Animated.Text>
-              </View>
+                </Text>
+              </Animated.View>
 
               <View style={{flex: 0.87}}>
                 <View style={{marginTop: HP(3)}}>
@@ -142,7 +145,7 @@ const CustomBottomSheet = forwardRef(
                   {/* Use the Carousel component here */}
                   <Carousel
                     width={300}
-                    height={365}
+                    height={360}
                     // loop
                     autoPlay={false}
                     borderRadius={20}
@@ -165,6 +168,8 @@ const CustomBottomSheet = forwardRef(
                         style={{
                           flex: 1,
                           justifyContent: 'center',
+                          // alignItems: 'center',
+                          // alignSelf: 'center',
                         }}>
                         <ImageBackground
                           source={{uri: item.url}}
@@ -249,7 +254,12 @@ const CustomBottomSheet = forwardRef(
                   />
                 </Animated.View>
               </View>
-              <Text style={{color: Colors.tabbgclr, fontSize: HP(1.7)}}>
+              <Text
+                style={{
+                  color: Colors.tabbgclr,
+                  fontSize: HP(1.7),
+                  top: HP(2),
+                }}>
                 Swipe when done to view next
               </Text>
             </View>
@@ -261,9 +271,10 @@ const CustomBottomSheet = forwardRef(
                 alignItems: 'center',
                 justifyContent: 'space-evenly',
               }}>
-              <View style={{justifyContent: 'center', alignItems: 'center'}}>
-                <Animated.Text
-                  entering={FadeInUp.duration(1000)}
+              <Animated.View
+                entering={FadeInDown.duration(1000)}
+                style={{justifyContent: 'center', alignItems: 'center'}}>
+                <Text
                   style={{
                     marginVertical: HP(2.5),
                     fontSize: HP(3),
@@ -272,10 +283,9 @@ const CustomBottomSheet = forwardRef(
                     alignSelf: 'center',
                   }}>
                   You're on a roll!
-                </Animated.Text>
+                </Text>
                 <View style={{alignItems: 'center', justifyContent: 'center'}}>
-                  <Animated.Text
-                    entering={FadeInUp.duration(1000)}
+                  <Text
                     style={{
                       width: '70%',
                       alignSelf: 'center',
@@ -287,9 +297,9 @@ const CustomBottomSheet = forwardRef(
                     <Text>{'\n'}</Text>
                     complete your routine to set a new record{' '}
                     <Text>{'\n'}</Text>for the week.
-                  </Animated.Text>
+                  </Text>
                 </View>
-              </View>
+              </Animated.View>
               <View>
                 <Image
                   source={Images.YOGAGIRL}
