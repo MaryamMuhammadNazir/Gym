@@ -9,7 +9,7 @@ import {
   FlatList,
 } from 'react-native';
 // import { Sound } from 'react-native-sound';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import CustomizeHeader from '../../../components/CustomizeHeader';
 import {Colors, Images, data} from '../../../assets';
 import {WP, HP} from '../../../utility/ResponsiveSize';
@@ -55,6 +55,11 @@ const SoundCustom = () => {
       audio.release();
     };
   }, []);
+  const animationRef = useRef(false);
+
+  useEffect(() => {
+    animationRef.current?.play();
+  }, [playing]);
 
   const playPause = () => {
     console.log('audio.isPlaying', playing);
@@ -185,9 +190,9 @@ const SoundCustom = () => {
                 borderColor: Colors.tabbgclr,
               }}>
               <LottieView
+                autoPlay={false}
                 source={Animations.MUSIC}
-                autoPlay={playing}
-                resizeMode="cover"
+                ref={animationRef}
                 style={styles.lottieView}
               />
             </View>
@@ -211,7 +216,7 @@ const SoundCustom = () => {
                 // setPlaying(!playing);
               }}>
               <Image
-                source={playing == false ? Images.PUASE : Images.PLAYFILLED}
+                source={playing == false ? Images.PLAYFILLED : Images.PUASE}
                 style={{
                   resizeMode: 'cover',
                   height: 30,
